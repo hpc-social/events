@@ -15,6 +15,7 @@ import pytz
 import sys
 import icalendar
 import uuid
+import time
 
 here = os.path.dirname(os.path.abspath(__file__))
 
@@ -204,6 +205,8 @@ class Calendar:
             self.cal = icalendar.Calendar()
             self.cal["dtstart"] = start
             self.cal["summary"] = summary
+            self.cal.add("prodid", "-//HPC Social//Calendar//")
+            self.cal.add("version", "2.0")
 
     @property
     def new_events_count(self):
@@ -221,7 +224,7 @@ class Calendar:
         """
         Export to icalendar
         """
-        return self.cal.to_ical().decode("utf-8").replace("\r\n", "\n").strip()
+        return self.cal.to_ical()
 
     def index(self):
         """
@@ -242,11 +245,15 @@ class Calendar:
         new_event.add("summary", summary)
 
         # Create event date and make timezone aware
-        new_event["dtstart"] = parse_date(event["start_date_time"], event["timezone"])
-        new_event["dtend"] = parse_date(event["end_date_time"], event["timezone"])
-        new_event["dtstamp"] = datetime.datetime.now()
+        new_event.add(
+            "dtstart", parse_date(event["start_date_time"], event["timezone"])
+        )
+        new_event.add("dtend", parse_date(event["end_date_time"], event["timezone"]))
+        new_event.add(
+            "dtstamp", datetime.datetime(2023, 1, 2, 0, 10, 0, tzinfo=pytz.utc)
+        )
         new_event["location"] = icalendar.vText(event["location"])
-        new_event['uid'] = str(uuid.uuid4())
+        new_event["uid"] = str(uuid.uuid4())
         new_event.add("categories", event["categories"], encode=0)
 
         # Is this a new event?
@@ -259,7 +266,7 @@ class Calendar:
         """
         Save back to file
         """
-        with open(self.ical_file, "w") as fd:
+        with open(self.ical_file, "wb") as fd:
             fd.write(self.to_ical())
 
 
@@ -267,8 +274,11 @@ def parse_date(datestr, timezone):
     """
     Return a time aware datetime object from a date string and timezone.
     """
+    # This makes it timezone aware
     dtime = datetime.datetime.strptime(datestr, "%m/%d/%Y %H:%M:%S")
-    return dtime.replace(tzinfo=pytz.timezone(timezone))
+    dtime = dtime.replace(tzinfo=pytz.timezone(timezone))
+    # And hopefully converts to UTC?
+    return datetime.datetime.utcfromtimestamp(time.mktime(dtime.timetuple()))
 
 
 def update_events(outdir, metadata_file="calendar.yaml"):
