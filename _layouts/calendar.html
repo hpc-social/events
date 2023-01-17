@@ -40,14 +40,10 @@ layout: default
        day: 'day',
        year: 'list'
      },
-   //  events: {
-   //    url: "{{ site.baseurl }}/calendars/all.ics",
-   //    format: "ics",
- //    },
-  events: {
-      url: 'https://calendar.google.com/calendar/ical/hdpka717lurrk1qu3pds5q7u40@group.calendar.google.com/public/basic.ics',
-      format: 'ics'
-    },
+     events: {
+       url: "{{ site.url }}{{ site.baseurl }}/calendars/all.ical",
+       format: "ics"
+     },
      editable: false,
      selectable: true,
      dateClick: function(info) {
