@@ -207,7 +207,9 @@ class Calendar:
             self.cal["summary"] = summary
             self.cal.add("prodid", "-//HPC Social//Calendar//")
             self.cal.add("version", "2.0")
-
+            self.cal.add("calscale", "GREGORIAN")
+            self.cal.add("method", "PUBLISH")
+            
     @property
     def new_events_count(self):
         return len(self.new_events)

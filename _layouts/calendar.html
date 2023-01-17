@@ -1,15 +1,19 @@
 ---
-layout: default
+layout: page
 ---
 
 <style>
 .fc-day-number {
   text-align: left !important;
 }
+.a447 {
+  background-color: red;
+}
 </style>
 
 {{ content }}
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.css" />
 <div class="row">
   <div class="col-md-12">
     <div id='calendar'></div>
@@ -22,56 +26,73 @@ layout: default
 }
 </style>
 
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.0.3/index.global.js'></script>
+
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.4.0/ical.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/icalendar@5.5.1/main.global.min.js"></script>
+
 
 <script src="{{ site.baseurl }}/assets/js/add-to-calendar.min.js"></script>
 <script>
  document.addEventListener('DOMContentLoaded', function() {
    var calendarEl = document.getElementById('calendar');
    calendar = new FullCalendar.Calendar(calendarEl, {
-     initialView: "dayGridMonth",
+     timeZone: 'UTC', 
      headerToolbar: {
        left: 'prev,next today',
        center: 'title',
        right: 'dayGridMonth,timeGridWeek,timeGridDay,listAll'
      },
+     resources: [{
+        id: 'conference',
+        title: 'Conferences'
+     }],
      buttonText: {
        week: 'week',
        day: 'day',
        year: 'list'
      },
-     events: {
-       url: "{{ site.url }}{{ site.baseurl }}/calendars/all.ical",
-       format: "ics"
+     eventSources: [{
+       resourceId: 'conference',
+       url: "{{ site.baseurl }}/calendars/conference.ical",
+       format: "ics",
+     }],
+     eventClick: function(info) {
+       console.log('TODO vsoch make me pretty!')
      },
-     editable: false,
-     selectable: true,
+     eventRender: function(event, eventElement) {
+      console.log(event)
+      // if (event.title == "Booked") {
+      //  eventElement.css('background-color', 'green');
+      // }
+    },
      dateClick: function(info) {
        if (calendar.view.type != "timeGridDay") {
          calendar.changeView('timeGridDay', info.dateStr);
        }
      },
-     //
      navLinks: true,
      navLinkDayClick: function(date, jsEvent) {
        if (calendar.view.type != "timeGridDay") {
          calendar.changeView('timeGridDay', date);
        }
      },
-     //
      weekNumbers: true,
      navLinkWeekClick: function(weekStart, jsEvent) {
        if (calendar.view.type != "timeGridWeek") {
          calendar.changeView('timeGridWeek', weekStart);
        }
      },
-     //
      slotDuration: "00:15",
      dayMaxEvents: true, // allow "more" link when too many events
      views: {
        listAll: {
          type: "list",
        }
+     },
+     eventDidMount: function(arg) {
+       arg.el.setAttribute("title", arg.event.title);
      }
    });
   calendar.render();
