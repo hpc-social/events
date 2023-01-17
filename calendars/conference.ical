@@ -6,7 +6,8 @@ SUMMARY:Supercomputing 2023 in Denver\, Colorado hosted by Colorado Conven
  tion Center\, Sponsored by sighpc\, IEEE\, TCHPC
 DTSTART:2023-11-12 07:00:00-07:00
 DTEND:2023-11-17 19:00:00-07:00
-DTSTAMP:2023-01-16 22:36:04.911266
+DTSTAMP:2023-01-16 23:36:51.567107
+UID:8ed19673-db65-4a1f-824e-42d713b896b0
 CATEGORIES:Conference
 DESCRIPTION:The International Conference for High Performance Computing\, 
  Networking\, Storage\, and Analysis (SC23)
@@ -17,7 +18,8 @@ BEGIN:VEVENT
 SUMMARY:Container Plumbing 2023 in virtual hosted by RedHat
 DTSTART:2023-03-22 13:00:00+00:00
 DTEND:2023-03-22 18:00:00+00:00
-DTSTAMP:2023-01-16 22:36:04.911415
+DTSTAMP:2023-01-16 23:36:51.567297
+UID:f8002909-0aaa-4c64-9e2f-0d83e4fea4e2
 CATEGORIES:Conference
 DESCRIPTION:The Virtual Conference for The Plumbing That Makes The Cloud W
  ork

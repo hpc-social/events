@@ -26,7 +26,7 @@ $ pip install -r scripts/requirements.txt
 And target the pages/calendars directory:
 
 ```bash
-$ python scripts/update_events.py pages/calendars
+$ python scripts/update_events.py ./calendars
 ```
 
 <a rel="me" href="https://mast.hpc.social/@events">Mastodon</a>

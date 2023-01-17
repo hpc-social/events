@@ -14,6 +14,7 @@ import json
 import pytz
 import sys
 import icalendar
+import uuid
 
 here = os.path.dirname(os.path.abspath(__file__))
 
@@ -245,6 +246,7 @@ class Calendar:
         new_event["dtend"] = parse_date(event["end_date_time"], event["timezone"])
         new_event["dtstamp"] = datetime.datetime.now()
         new_event["location"] = icalendar.vText(event["location"])
+        new_event['uid'] = str(uuid.uuid4())
         new_event.add("categories", event["categories"], encode=0)
 
         # Is this a new event?
