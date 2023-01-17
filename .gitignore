@@ -1,0 +1,5 @@
+.env
+Gemfile.lock
+env
+_site
+_data/previous-jobs.yaml

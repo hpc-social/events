@@ -1,0 +1,83 @@
+---
+layout: default
+---
+
+<style>
+.fc-day-number {
+  text-align: left !important;
+}
+</style>
+
+{{ content }}
+
+<div class="row">
+  <div class="col-md-12">
+    <div id='calendar'></div>
+  </div>
+</div>
+
+<style>
+.fc-day {
+  text-align: right !important;
+}
+</style>
+
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.0.3/index.global.js'></script>
+
+<script src="{{ site.baseurl }}/assets/js/add-to-calendar.min.js"></script>
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+   var calendarEl = document.getElementById('calendar');
+   calendar = new FullCalendar.Calendar(calendarEl, {
+     initialView: "dayGridMonth",
+     headerToolbar: {
+       left: 'prev,next today',
+       center: 'title',
+       right: 'dayGridMonth,timeGridWeek,timeGridDay,listAll'
+     },
+     buttonText: {
+       week: 'week',
+       day: 'day',
+       year: 'list'
+     },
+   //  events: {
+   //    url: "{{ site.baseurl }}/calendars/all.ics",
+   //    format: "ics",
+ //    },
+  events: {
+      url: 'https://calendar.google.com/calendar/ical/hdpka717lurrk1qu3pds5q7u40@group.calendar.google.com/public/basic.ics',
+      format: 'ics'
+    },
+     editable: false,
+     selectable: true,
+     dateClick: function(info) {
+       if (calendar.view.type != "timeGridDay") {
+         calendar.changeView('timeGridDay', info.dateStr);
+       }
+     },
+     //
+     navLinks: true,
+     navLinkDayClick: function(date, jsEvent) {
+       if (calendar.view.type != "timeGridDay") {
+         calendar.changeView('timeGridDay', date);
+       }
+     },
+     //
+     weekNumbers: true,
+     navLinkWeekClick: function(weekStart, jsEvent) {
+       if (calendar.view.type != "timeGridWeek") {
+         calendar.changeView('timeGridWeek', weekStart);
+       }
+     },
+     //
+     slotDuration: "00:15",
+     dayMaxEvents: true, // allow "more" link when too many events
+     views: {
+       listAll: {
+         type: "list",
+       }
+     }
+   });
+  calendar.render();
+});
+</script>

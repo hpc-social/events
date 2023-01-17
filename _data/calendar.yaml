@@ -1,0 +1,31 @@
+# High level metadata about calendars
+# "category" should match with the Google form
+calendars:
+  - name: hpc-social All Events
+    summary: All HPC Social Events
+    start: 20230101T080000
+    category: all
+  - name: General
+    summary: hpc-social General Event
+    start: 20230101T080000
+    category: general
+  - name: Conferences
+    summary: hpc-social Conference Calendar
+    start: 20230101T080000
+    category: conference      
+  - name: Hackathon
+    summary: hpc-social Hackathons
+    start: 20230101T080000
+    category: hackathon
+  - name: Panel
+    summary: hpc-social Panels
+    start: 20230101T080000
+    category: panel
+  - name: Discussion
+    summary: hpc-social Discussions
+    start: 20230101T080000
+    category: discussion
+  - name: hpc-social Social Events
+    summary: HPC Social 
+    start: 20230101T080000
+    category: discussion

@@ -1,0 +1,5 @@
+urlchecker
+requests
+pytest
+pyyaml
+icalendar
