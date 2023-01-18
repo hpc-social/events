@@ -6,7 +6,7 @@ on:
   - cron: 0 2 * * *
 
 jobs:
-  update-jobs:
+  update-events:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +16,7 @@ jobs:
       run: |
         sudo apt-get update && sudo apt-get install -y python3 python3-pip python3-setuptools wget
         sudo pip3 install -r scripts/requirements.txt
-        python3 scripts/update_events.py
+        python3 scripts/update_events.py ./calendars
 
     # TODO automation to post updates 
 
