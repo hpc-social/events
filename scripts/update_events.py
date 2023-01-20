@@ -199,7 +199,7 @@ class Calendar:
 
         if os.path.exists(self.ical_file):
             with open(self.ical_file, "r") as fd:
-                self.ical = icalendar.Calendar.from_ical(str(fd.read()))
+                self.cal = icalendar.Calendar.from_ical(str(fd.read()))
             self.index()
         else:
             self.cal = icalendar.Calendar()
