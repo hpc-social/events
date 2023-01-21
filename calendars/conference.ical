@@ -30,4 +30,29 @@ DESCRIPTION:The Virtual Conference for The Plumbing That Makes The Cloud W
 LOCATION:virtual
 NAME:Container Plumbing 2023
 END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Supercomputing 2023 in Denver\, Colorado hosted by Colorado Conven
+ tion Center\, Sponsored by sighpc\, IEEE\, TCHPC
+DTSTART:20231112T070000
+DTEND:20231117T190000
+DTSTAMP:20230102T001000Z
+UID:2b57b8e3-975d-41bc-9332-ad1ca22b1589
+CATEGORIES:Conference
+DESCRIPTION:The International Conference for High Performance Computing\, 
+ Networking\, Storage\, and Analysis (SC23)
+LOCATION:Denver\, Colorado
+NAME:Supercomputing 2023
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Container Plumbing 2023 in virtual hosted by RedHat
+DTSTART:20230322T130000
+DTEND:20230322T180000
+DTSTAMP:20230102T001000Z
+UID:1b3c6d83-6489-48d7-8b9f-b45f62a11989
+CATEGORIES:Conference
+DESCRIPTION:The Virtual Conference for The Plumbing That Makes The Cloud W
+ ork
+LOCATION:virtual
+NAME:Container Plumbing 2023
+END:VEVENT
 END:VCALENDAR
