@@ -8,10 +8,10 @@ SUMMARY:hpc-social Conference Calendar
 BEGIN:VEVENT
 SUMMARY:Supercomputing 2023 in Denver\, Colorado hosted by Colorado Conven
  tion Center\, Sponsored by sighpc\, IEEE\, TCHPC
-DTSTART:20231112T140000
-DTEND:20231118T020000
+DTSTART:20231112T070000
+DTEND:20231117T190000
 DTSTAMP:20230102T001000Z
-UID:259bc594-c21d-45dc-b93a-b19f8cb30bed
+UID:e23c183a-b3b4-4105-a981-8845080249ec
 CATEGORIES:Conference
 DESCRIPTION:The International Conference for High Performance Computing\, 
  Networking\, Storage\, and Analysis (SC23)
@@ -20,10 +20,10 @@ NAME:Supercomputing 2023
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Container Plumbing 2023 in virtual hosted by RedHat
-DTSTART:20230322T200000
-DTEND:20230323T010000
+DTSTART:20230322T130000
+DTEND:20230322T180000
 DTSTAMP:20230102T001000Z
-UID:815c4aa3-a9c1-435a-ae17-26475916636b
+UID:f63e3a3d-b2c2-4d70-8ad7-f82b089006ee
 CATEGORIES:Conference
 DESCRIPTION:The Virtual Conference for The Plumbing That Makes The Cloud W
  ork
