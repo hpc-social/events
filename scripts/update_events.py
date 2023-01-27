@@ -197,18 +197,13 @@ class Calendar:
         # Existing events (if loaded)
         self._events = set()
 
-        if os.path.exists(self.ical_file):
-            with open(self.ical_file, "r") as fd:
-                self.cal = icalendar.Calendar.from_ical(str(fd.read()))
-            self.index()
-        else:
-            self.cal = icalendar.Calendar()
-            self.cal["dtstart"] = start
-            self.cal["summary"] = summary
-            self.cal.add("prodid", "-//HPC Social//Calendar//")
-            self.cal.add("version", "2.0")
-            self.cal.add("calscale", "GREGORIAN")
-            self.cal.add("method", "PUBLISH")
+        self.cal = icalendar.Calendar()
+        self.cal["dtstart"] = start
+        self.cal["summary"] = summary
+        self.cal.add("prodid", "-//HPC Social//Calendar//")
+        self.cal.add("version", "2.0")
+        self.cal.add("calscale", "GREGORIAN")
+        self.cal.add("method", "PUBLISH")
             
     @property
     def new_events_count(self):
