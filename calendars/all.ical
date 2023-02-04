@@ -11,7 +11,7 @@ SUMMARY:Supercomputing 2023 in Denver\, Colorado hosted by Colorado Conven
 DTSTART:20231112T070000
 DTEND:20231117T190000
 DTSTAMP:20230102T001000Z
-UID:ea8f4f1b-2a70-499c-91a2-b4bcad7f879d
+UID:2452bbab-34a1-4c84-9785-35dd5135aab4
 CATEGORIES:Conference
 DESCRIPTION:The International Conference for High Performance Computing\, 
  Networking\, Storage\, and Analysis (SC23)
@@ -23,11 +23,131 @@ SUMMARY:Container Plumbing 2023 in virtual hosted by RedHat
 DTSTART:20230322T130000
 DTEND:20230322T180000
 DTSTAMP:20230102T001000Z
-UID:70c1f3f7-af6f-435d-9717-9f095453da31
+UID:6832cea4-0505-4094-887d-7ea5665b7853
 CATEGORIES:Conference
 DESCRIPTION:The Virtual Conference for The Plumbing That Makes The Cloud W
  ork
 LOCATION:virtual
 NAME:Container Plumbing 2023
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
+ um hosted by FOSDEM is a free and non-commercial event organised by the co
+ mmunity for the community. The goal is to provide free and open source sof
+ tware developers and communities a place to meet to:  get in touch with ot
+ her developers and projects\; be informed about the latest developments in
+  the free software world\; be informed about the latest developments in th
+ e open source world\; attend interesting talks and presentations on variou
+ s topics by project leaders and committers\; to promote the development an
+ d benefits of free software and open source solutions. Participation and a
+ ttendance is totally free\, though the organisers gratefully accept donati
+ ons and sponsorship.
+DTSTART:20230204T090000
+DTEND:20230204T170000
+DTSTAMP:20230102T001000Z
+UID:984d54d7-a609-4e05-a310-8fe33f8382ad
+CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
+DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
+ t approaches to scientific computing. HPC typically deals with smaller\, h
+ ighly structured data sets and huge amounts of computation while Big Data\
+ , not surprisingly\, deals with gigantic\, unstructured data sets and focu
+ ses on the I/O bottlenecks. With the Big Data trend unlocking access to an
+  unprecedented amount of data\, Data Science has emerged to tackle the pro
+ blem of creating processes and approaches to extracting knowledge or insig
+ hts from these data sets. Machine learning and predictive analytics algori
+ thms have joined the family of more traditional HPC algorithms and are pus
+ hing the requirements of cluster and data scalability.  Free and Open Sour
+ ce communities have been the foundation of the HPC and Big Data communitie
+ s for some time. In the HPC community\, it should be no surprise that curr
+ ently 100% of the Top500 supercomputers in the world run (some variant of)
+  Linux. On the Big Data side\, the Hadoop ecosystem has had a tremendous a
+ mount of Open Source contributions from a wide range of organizations comi
+ ng together under the Apache Software Foundation.  Our goal is to bring th
+ e communities together\, share expertise\, learn how we can benefit from e
+ ach other's work and foster further joint research and collaboration. We w
+ elcome talks about Free and Open Source solutions to the challenges presen
+ ted by large scale computing\, data management and data analysis.
+LOCATION:Brussels\, Belgium
+NAME:FOSDEM HPC\, Big Data and Data Science devroom
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
+ um hosted by FOSDEM is a free and non-commercial event organised by the co
+ mmunity for the community. The goal is to provide free and open source sof
+ tware developers and communities a place to meet to:  get in touch with ot
+ her developers and projects\; be informed about the latest developments in
+  the free software world\; be informed about the latest developments in th
+ e open source world\; attend interesting talks and presentations on variou
+ s topics by project leaders and committers\; to promote the development an
+ d benefits of free software and open source solutions. Participation and a
+ ttendance is totally free\, though the organisers gratefully accept donati
+ ons and sponsorship.
+DTSTART:20230204T090000
+DTEND:20230204T170000
+DTSTAMP:20230102T001000Z
+UID:47dfd4c0-2ff3-4b56-8c76-aea6ba2b375e
+CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
+DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
+ t approaches to scientific computing. HPC typically deals with smaller\, h
+ ighly structured data sets and huge amounts of computation while Big Data\
+ , not surprisingly\, deals with gigantic\, unstructured data sets and focu
+ ses on the I/O bottlenecks. With the Big Data trend unlocking access to an
+  unprecedented amount of data\, Data Science has emerged to tackle the pro
+ blem of creating processes and approaches to extracting knowledge or insig
+ hts from these data sets. Machine learning and predictive analytics algori
+ thms have joined the family of more traditional HPC algorithms and are pus
+ hing the requirements of cluster and data scalability.  Free and Open Sour
+ ce communities have been the foundation of the HPC and Big Data communitie
+ s for some time. In the HPC community\, it should be no surprise that curr
+ ently 100% of the Top500 supercomputers in the world run (some variant of)
+  Linux. On the Big Data side\, the Hadoop ecosystem has had a tremendous a
+ mount of Open Source contributions from a wide range of organizations comi
+ ng together under the Apache Software Foundation.  Our goal is to bring th
+ e communities together\, share expertise\, learn how we can benefit from e
+ ach other's work and foster further joint research and collaboration. We w
+ elcome talks about Free and Open Source solutions to the challenges presen
+ ted by large scale computing\, data management and data analysis.
+LOCATION:Brussels\, Belgium
+NAME:FOSDEM HPC\, Big Data and Data Science devroom
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
+ um hosted by FOSDEM is a free and non-commercial event organised by the co
+ mmunity for the community. The goal is to provide free and open source sof
+ tware developers and communities a place to meet to:  get in touch with ot
+ her developers and projects\; be informed about the latest developments in
+  the free software world\; be informed about the latest developments in th
+ e open source world\; attend interesting talks and presentations on variou
+ s topics by project leaders and committers\; to promote the development an
+ d benefits of free software and open source solutions. Participation and a
+ ttendance is totally free\, though the organisers gratefully accept donati
+ ons and sponsorship.
+DTSTART:20230204T090000
+DTEND:20230204T170000
+DTSTAMP:20230102T001000Z
+UID:9263d2a6-161d-4422-8007-fd2fbe092049
+CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
+DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
+ t approaches to scientific computing. HPC typically deals with smaller\, h
+ ighly structured data sets and huge amounts of computation while Big Data\
+ , not surprisingly\, deals with gigantic\, unstructured data sets and focu
+ ses on the I/O bottlenecks. With the Big Data trend unlocking access to an
+  unprecedented amount of data\, Data Science has emerged to tackle the pro
+ blem of creating processes and approaches to extracting knowledge or insig
+ hts from these data sets. Machine learning and predictive analytics algori
+ thms have joined the family of more traditional HPC algorithms and are pus
+ hing the requirements of cluster and data scalability.  Free and Open Sour
+ ce communities have been the foundation of the HPC and Big Data communitie
+ s for some time. In the HPC community\, it should be no surprise that curr
+ ently 100% of the Top500 supercomputers in the world run (some variant of)
+  Linux. On the Big Data side\, the Hadoop ecosystem has had a tremendous a
+ mount of Open Source contributions from a wide range of organizations comi
+ ng together under the Apache Software Foundation.  Our goal is to bring th
+ e communities together\, share expertise\, learn how we can benefit from e
+ ach other's work and foster further joint research and collaboration. We w
+ elcome talks about Free and Open Source solutions to the challenges presen
+ ted by large scale computing\, data management and data analysis.
+LOCATION:Brussels\, Belgium
+NAME:FOSDEM HPC\, Big Data and Data Science devroom
 END:VEVENT
 END:VCALENDAR
