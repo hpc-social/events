@@ -11,7 +11,7 @@ SUMMARY:Supercomputing 2023 in Denver\, Colorado hosted by Colorado Conven
 DTSTART:20231112T070000
 DTEND:20231117T190000
 DTSTAMP:20230102T001000Z
-UID:bc97eada-179f-4ec9-92cb-562bfcbf6b27
+UID:1ec69085-016f-4a35-aa63-f2d0d303b936
 CATEGORIES:Conference
 DESCRIPTION:The International Conference for High Performance Computing\, 
  Networking\, Storage\, and Analysis (SC23)
@@ -23,7 +23,7 @@ SUMMARY:Container Plumbing 2023 in virtual hosted by RedHat
 DTSTART:20230322T130000
 DTEND:20230322T180000
 DTSTAMP:20230102T001000Z
-UID:2f07362d-cf1d-4b54-9653-1b0570b30074
+UID:3c0b701f-e88a-4766-88f2-ef1c9cd983db
 CATEGORIES:Conference
 DESCRIPTION:The Virtual Conference for The Plumbing That Makes The Cloud W
  ork
@@ -45,7 +45,7 @@ SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
 DTSTART:20230204T090000
 DTEND:20230204T170000
 DTSTAMP:20230102T001000Z
-UID:b9570f43-f9ee-4164-89b0-11ab67ef5eb6
+UID:21689ce7-4dc8-403e-abd4-eb13485ccf2f
 CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
 DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
  t approaches to scientific computing. HPC typically deals with smaller\, h
@@ -85,7 +85,7 @@ SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
 DTSTART:20230204T090000
 DTEND:20230204T170000
 DTSTAMP:20230102T001000Z
-UID:f95ce7c5-27c0-4e7f-9202-d6d9bde2c83d
+UID:83e30f24-881b-4750-b02c-6477154f1eac
 CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
 DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
  t approaches to scientific computing. HPC typically deals with smaller\, h
@@ -111,6 +111,22 @@ LOCATION:Brussels\, Belgium
 NAME:FOSDEM HPC\, Big Data and Data Science devroom
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
+ asyBuild community\, see https://easybuild.io/eum23/#organisation
+DTSTART:20230424T100000
+DTEND:20230426T180000
+DTSTAMP:20230102T001000Z
+UID:7e612eea-d019-4553-b47a-621895c23056
+CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
+ l
+DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
+ tive event that provides a great opportunity to meet fellow EasyBuild enth
+ usiasts\, discuss related topics\, and learn about new aspects of the tool
+ .
+LOCATION:Imperial College London
+NAME:EasyBuild User Meeting 2023
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
  um hosted by FOSDEM is a free and non-commercial event organised by the co
  mmunity for the community. The goal is to provide free and open source sof
@@ -125,7 +141,7 @@ SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
 DTSTART:20230204T090000
 DTEND:20230204T170000
 DTSTAMP:20230102T001000Z
-UID:cb08f084-1134-4b4c-9ec6-346f0cd4741e
+UID:6e061422-264b-45f3-88f3-4c71e08c7e5f
 CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
 DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
  t approaches to scientific computing. HPC typically deals with smaller\, h
@@ -149,5 +165,53 @@ DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
  ted by large scale computing\, data management and data analysis.
 LOCATION:Brussels\, Belgium
 NAME:FOSDEM HPC\, Big Data and Data Science devroom
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
+ asyBuild community\, see https://easybuild.io/eum23/#organisation
+DTSTART:20230424T100000
+DTEND:20230426T180000
+DTSTAMP:20230102T001000Z
+UID:3501d6f2-fa0f-49c2-8c9f-b7021bb54ddd
+CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
+ l
+DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
+ tive event that provides a great opportunity to meet fellow EasyBuild enth
+ usiasts\, discuss related topics\, and learn about new aspects of the tool
+ .
+LOCATION:Imperial College London
+NAME:EasyBuild User Meeting 2023
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
+ asyBuild community\, see https://easybuild.io/eum23/#organisation
+DTSTART:20230424T100000
+DTEND:20230426T180000
+DTSTAMP:20230102T001000Z
+UID:8e3abeaf-eb74-4488-9991-7b349a47717f
+CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
+ l
+DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
+ tive event that provides a great opportunity to meet fellow EasyBuild enth
+ usiasts\, discuss related topics\, and learn about new aspects of the tool
+ .
+LOCATION:Imperial College London
+NAME:EasyBuild User Meeting 2023
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
+ asyBuild community\, see https://easybuild.io/eum23/#organisation
+DTSTART:20230424T100000
+DTEND:20230426T180000
+DTSTAMP:20230102T001000Z
+UID:a03f5574-1438-43b4-ac3e-5a17074aa97a
+CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
+ l
+DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
+ tive event that provides a great opportunity to meet fellow EasyBuild enth
+ usiasts\, discuss related topics\, and learn about new aspects of the tool
+ .
+LOCATION:Imperial College London
+NAME:EasyBuild User Meeting 2023
 END:VEVENT
 END:VCALENDAR

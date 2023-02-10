@@ -4,14 +4,14 @@ PRODID:-//HPC Social//Calendar//
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 DTSTART:20230101T080000
-SUMMARY:hpc-social General Event
+SUMMARY:hpc-social Hackathons
 BEGIN:VEVENT
 SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
  asyBuild community\, see https://easybuild.io/eum23/#organisation
 DTSTART:20230424T100000
 DTEND:20230426T180000
 DTSTAMP:20230102T001000Z
-UID:450294ba-e0a7-47f5-b3bc-170687b8e7b3
+UID:ab5762bf-449d-461a-8f5d-e1dda497bffd
 CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
  l
 DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
