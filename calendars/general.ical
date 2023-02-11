@@ -6,19 +6,15 @@ METHOD:PUBLISH
 DTSTART:20230101T080000
 SUMMARY:hpc-social General Event
 BEGIN:VEVENT
-SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
- asyBuild community\, see https://easybuild.io/eum23/#organisation
-DTSTART:20230424T100000
-DTEND:20230426T180000
+SUMMARY:ECP Birds of a Feathers in virtual hosted by Exascale Computing Pr
+ oject
+DTSTART:20230214T110000
+DTEND:20230216T170000
 DTSTAMP:20230102T001000Z
-UID:450294ba-e0a7-47f5-b3bc-170687b8e7b3
-CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
- l
-DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
- tive event that provides a great opportunity to meet fellow EasyBuild enth
- usiasts\, discuss related topics\, and learn about new aspects of the tool
- .
-LOCATION:Imperial College London
-NAME:EasyBuild User Meeting 2023
+UID:f01e668c-dd79-4f7b-b5da-468b360f193d
+CATEGORIES:Community Meeting
+DESCRIPTION:Birds of a Feather during the Exascale Computing
+LOCATION:virtual
+NAME:ECP Birds of a Feathers
 END:VEVENT
 END:VCALENDAR
