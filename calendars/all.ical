@@ -11,7 +11,7 @@ SUMMARY:Supercomputing 2023 in Denver\, Colorado hosted by Colorado Conven
 DTSTART:20231112T070000
 DTEND:20231117T190000
 DTSTAMP:20230102T001000Z
-UID:0ea40674-c057-41c9-bc07-ad5e6ec8e5ae
+UID:b87fe2f5-4339-4993-8e60-9ff6f5e24357
 CATEGORIES:Conference
 DESCRIPTION:The International Conference for High Performance Computing\, 
  Networking\, Storage\, and Analysis (SC23)
@@ -23,7 +23,7 @@ SUMMARY:Container Plumbing 2023 in virtual hosted by RedHat
 DTSTART:20230322T130000
 DTEND:20230322T180000
 DTSTAMP:20230102T001000Z
-UID:504ca9c8-ba22-4b74-a50c-aecb3d00389a
+UID:38502a4c-3e7c-4791-8c14-d88fafc902d0
 CATEGORIES:Conference
 DESCRIPTION:The Virtual Conference for The Plumbing That Makes The Cloud W
  ork
@@ -45,7 +45,7 @@ SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
 DTSTART:20230204T090000
 DTEND:20230204T170000
 DTSTAMP:20230102T001000Z
-UID:2add96c4-a631-4e36-a6ba-56a169636e68
+UID:542ea5af-927a-4ca1-953e-d1a1af7c0487
 CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
 DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
  t approaches to scientific computing. HPC typically deals with smaller\, h
@@ -85,7 +85,7 @@ SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
 DTSTART:20230204T090000
 DTEND:20230204T170000
 DTSTAMP:20230102T001000Z
-UID:3aa2798a-b7cf-4208-b0a7-4b913d4ec999
+UID:f56a08f0-bcad-4b63-9746-4d4776f0641d
 CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
 DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
  t approaches to scientific computing. HPC typically deals with smaller\, h
@@ -116,7 +116,7 @@ SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
 DTSTART:20230424T100000
 DTEND:20230426T180000
 DTSTAMP:20230102T001000Z
-UID:6b8dd518-058a-4ea5-a840-07785ae909be
+UID:fad220fd-c78f-44e5-9fe0-6050d96e23a7
 CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
  l
 DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
@@ -141,7 +141,7 @@ SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
 DTSTART:20230204T090000
 DTEND:20230204T170000
 DTSTAMP:20230102T001000Z
-UID:44e1c877-22f3-4da7-b7cb-7f74c7c39309
+UID:8e030c5b-e130-4115-8f24-a6b2013ad333
 CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
 DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
  t approaches to scientific computing. HPC typically deals with smaller\, h
@@ -172,7 +172,7 @@ SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
 DTSTART:20230424T100000
 DTEND:20230426T180000
 DTSTAMP:20230102T001000Z
-UID:5cae249a-d26b-49ce-8dff-adec12f50481
+UID:3d647c51-cb11-46fa-839a-a9f14d1191a2
 CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
  l
 DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
@@ -188,7 +188,7 @@ SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
 DTSTART:20230424T100000
 DTEND:20230426T180000
 DTSTAMP:20230102T001000Z
-UID:8a943ee9-6bc3-4527-8ba4-01606c43b6e7
+UID:f53178b4-78b6-4c6b-9719-2d38c71e03ec
 CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
  l
 DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
@@ -204,7 +204,7 @@ SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
 DTSTART:20230424T100000
 DTEND:20230426T180000
 DTSTAMP:20230102T001000Z
-UID:c2ed9727-6201-4cfd-be08-da8292736d97
+UID:d6b34c0b-5a99-4815-af1d-42ddab85a31e
 CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
  l
 DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
@@ -220,7 +220,7 @@ SUMMARY:ECP Birds of a Feathers in virtual hosted by Exascale Computing Pr
 DTSTART:20230214T110000
 DTEND:20230216T170000
 DTSTAMP:20230102T001000Z
-UID:3863a6af-996c-409b-a62e-0d4160e3c5d2
+UID:d51fafb1-90c8-4fb3-a754-92299316b958
 CATEGORIES:Community Meeting
 DESCRIPTION:Birds of a Feather during the Exascale Computing
 LOCATION:virtual
