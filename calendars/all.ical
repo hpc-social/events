@@ -6,6 +6,19 @@ METHOD:PUBLISH
 DTSTART:20230101T080000
 SUMMARY:All HPC Social Events
 BEGIN:VEVENT
+SUMMARY:Supercomputing 2023 in Denver\, Colorado hosted by Colorado Conven
+ tion Center\, Sponsored by sighpc\, IEEE\, TCHPC
+DTSTART:20231112T070000
+DTEND:20231117T190000
+DTSTAMP:20230102T001000Z
+UID:39ad14f2-82a5-42af-a94a-016002e1dd1d
+CATEGORIES:Conference
+DESCRIPTION:The International Conference for High Performance Computing\, 
+ Networking\, Storage\, and Analysis (SC23)
+LOCATION:Denver\, Colorado
+NAME:Supercomputing 2023
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
  asyBuild community\, see https://easybuild.io/eum23/#organisation
 DTSTART:20230424T100000
