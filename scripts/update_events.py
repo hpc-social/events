@@ -6,6 +6,7 @@
 # Copyright @vsoch, 2020-2023
 
 import os
+import copy
 import datetime
 import requests
 import yaml
@@ -16,11 +17,17 @@ import sys
 import icalendar
 import uuid
 import time
+from dateutil.rrule import rrulestr, rruleset
 
 here = os.path.dirname(os.path.abspath(__file__))
 
 scanned_url_file = os.path.join(here, "scanned-urls.txt")
 scanner_token = os.environ.get("SCANNER_KEY")
+
+# Keep track of today so we don't add old events
+now = datetime.datetime.utcnow()
+now.replace(tzinfo=pytz.utc)
+today = datetime.datetime.utcnow().replace(tzinfo=pytz.utc).date()
 
 
 def load_scanned_urls():
@@ -161,6 +168,7 @@ def parse_lines(lines):
                 sys.exit(f"Malicious url {url} detected, cancelling update.")
 
         for event_type in event_types:
+            event_type = event_type.strip()
             if event_type not in events:
                 events[event_type] = []
 
@@ -201,10 +209,11 @@ class Calendar:
         self.cal["dtstart"] = start
         self.cal["summary"] = summary
         self.cal.add("prodid", "-//HPC Social//Calendar//")
+        self.cal.add("x-wr-timezone", "UTC")
         self.cal.add("version", "2.0")
         self.cal.add("calscale", "GREGORIAN")
         self.cal.add("method", "PUBLISH")
-            
+
     @property
     def new_events_count(self):
         return len(self.new_events)
@@ -300,6 +309,9 @@ def update_events(outdir, metadata_file="calendar.yaml"):
     )
     calendars = {"all": all_events}
 
+    # Keep listing of unique parsed events
+    parsed_events = {}
+
     # Find all categories of previous files (if exist)
     for event_type, eventlist in events.items():
         event_key = event_type.lower()
@@ -318,9 +330,23 @@ def update_events(outdir, metadata_file="calendar.yaml"):
 
         # Add events to event type and all events calendar
         for event in eventlist:
+            print(f"Adding event {event['title']} to '{event_key}' calendar")
             calendar.add_event(event)
-            calendars["all"].add_event(event)
         calendars[event_key] = calendar
+        parsed_events[json.dumps(event)] = event
+
+    # Update "all" calendar just once!
+    for _, event in parsed_events.items():
+        print(f"Adding event {event['title']} to 'all' calendar")
+        calendars["all"].add_event(event)
+
+    # Update the calendar with associated ical feeds
+    print("Updating from external ical feeds...")
+    filepath = get_filepath("feeds.yaml")
+    feeds = read_file(filepath)
+    for feed in feeds:
+        print(f"...updating from {feed['name']} calendar feed")
+        calendars = update_from_feed(feed, calendars)
 
     # Use the "all" calendar to determine new events
     # TODO we can update social media, etc. with this list
@@ -329,8 +355,150 @@ def update_events(outdir, metadata_file="calendar.yaml"):
             f"Found {calendar.new_events_count} new events and a total of {calendar.total_events} for {calendar.event_key}"
         )
         calendar.save()
-
     save_scanned_urls()
+
+
+def update_from_feed(feed, calendars):
+    """
+    Given a feed, update our calendars with the events in it.
+
+    For now, we assume that events are not repeated (and don't check)
+    """
+    # Download the feed url (this should fail if there is an issue so a human looks at it)
+    res = requests.get(feed["url"])
+    if res.status_code != 200:
+        sys.exit("Issue retrieving data for calendar feed {feed['url']}")
+
+    # This is text of the ical feed
+    cal = icalendar.Calendar.from_ical(res.text)
+
+    # Add to feeds that are in categories
+    for calname in calendars:
+        if calname in feed["categories"] or calname == "all":
+            print(f"Updating {calname} with {feed['slug']}")
+            calendars[calname] = merge_calendars(feed, cal, calendars[calname])
+    return calendars
+
+
+def merge_calendars(feed, source, dest):
+    """
+    Given two calendars, merge source into dest.
+
+    Modified from:
+    https://gist.github.com/adamgreig/a5eada2934d19189c0f6
+    """
+    for event in source.walk("VEVENT"):
+        end = event.get("dtend")
+
+        # Only add events with endings!
+        if end:
+            if hasattr(end.dt, "date"):
+                date = end.dt.date()
+            else:
+                date = end.dt
+
+            if not (date >= today or "RRULE" in event):
+                continue
+
+            copied_event = icalendar.Event()
+            for attr in event:
+                if type(event[attr]) is list:
+                    for element in event[attr]:
+                        copied_event.add(attr, element)
+                else:
+                    copied_event.add(attr, event[attr])
+
+            # Ensure we have the title, either just the feed title
+            # or included with the current title
+            title = (feed["slug"] + " " + copied_event.get("TITLE", "")).strip()
+            copied_event.add("TITLE", title)
+
+            # If it's an RRULE, it won't render and we need special logic
+            if copied_event.get("RRULE") is not None:
+                dates = get_rrules(copied_event)
+                del copied_event["RRULE"]
+                for dt in dates:
+                    new_event = copy.deepcopy(copied_event)
+
+                    # These will actually show up twice!
+                    for key in ["DTSTART", "DTEND", "DTSTAMP"]:
+                        if key in new_event:
+                            del new_event[key]
+                    new_event.add(
+                        "DTSTART",
+                        datetime.datetime(
+                            dt.year,
+                            dt.month,
+                            dt.day,
+                            dt.hour,
+                            dt.minute,
+                            dt.second,
+                            tzinfo=pytz.utc,
+                        ),
+                    )
+                    new_event.add(
+                        "DTEND",
+                        datetime.datetime(
+                            dt.year,
+                            dt.month,
+                            dt.day,
+                            dt.hour,
+                            dt.minute,
+                            dt.second,
+                            tzinfo=pytz.utc,
+                        ),
+                    )
+                    new_event.add(
+                        "DTSTAMP",
+                        datetime.datetime(
+                            dt.year,
+                            dt.month,
+                            dt.day,
+                            dt.hour,
+                            dt.minute,
+                            dt.second,
+                            tzinfo=pytz.utc,
+                        ),
+                    )
+                    dest.cal.add_component(new_event)
+
+            # Otherwise add as normal event
+            else:
+                dest.cal.add_component(copied_event)
+    return dest
+
+
+def get_rrules(event):
+    """
+    Given an rrule event, derive dates for next year.
+
+    Derived from:
+    https://codereview.stackexchange.com/questions/137985/parse-rrule-icalendar-entries
+    """
+    rules_text = "\n".join(
+        [line for line in event.content_lines() if line.startswith("RRULE")]
+    )
+    rules = rruleset()
+    first_rule = rrulestr(rules_text, dtstart=event.get("dtstart").dt)
+
+    # in some entries, tzinfo is missing
+    if first_rule._until and first_rule._until.tzinfo is None:
+        first_rule._until = first_rule._until.replace(tzinfo=UTC)
+    rules.rrule(first_rule)
+    exdates = event.get("exdate")
+
+    if not isinstance(exdates, list):  # apparently this isn't a list when
+        exdates = [exdates]  # there is only one EXDATE
+    for exdate in exdates:
+        try:
+            rules.exdate(exdate.dts[0].dt)
+        except AttributeError:  # sometimes there is a None entry here
+            pass
+
+    # Parse for next year why not
+    now = datetime.datetime.now(pytz.UTC)
+    in_one_year = now + datetime.timedelta(days=360)
+    return rules.between(now, in_one_year)
 
 
 def main(outdir):

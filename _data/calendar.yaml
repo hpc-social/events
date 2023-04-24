@@ -28,4 +28,4 @@ calendars:
   - name: hpc-social Social Events
     summary: HPC Social 
     start: 20230101T080000
-    category: discussion
+    category: social

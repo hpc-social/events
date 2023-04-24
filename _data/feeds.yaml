@@ -1,0 +1,6 @@
+# Calendar feeds we want to add
+- name: HPC Huddle
+  slug: HPC-HUDDLE # should be all uppercase, with dashes
+  url: https://hpc-hallway.github.io/The-Hallway/hpc-hallway.ics
+  summary: The HPC Hallway Calendar
+  categories: [all, general, discussion, social]
