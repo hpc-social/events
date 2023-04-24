@@ -32,7 +32,6 @@ layout: page
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/icalendar@5.5.1/main.global.min.js"></script>
 
-
 <script src="{{ site.baseurl }}/assets/js/add-to-calendar.min.js"></script>
 <script>
  document.addEventListener('DOMContentLoaded', function() {
@@ -45,8 +44,8 @@ layout: page
        right: 'dayGridMonth,timeGridWeek,timeGridDay,listAll'
      },
      resources: [{
-        id: 'conference',
-        title: 'Conferences'
+        id: 'all',
+        title: 'All HPC Social Events'
      }],
      buttonText: {
        week: 'week',
@@ -54,8 +53,8 @@ layout: page
        year: 'list'
      },
      eventSources: [{
-       resourceId: 'conference',
-       url: "{{ site.baseurl }}/calendars/conference.ical",
+       resourceId: 'all',
+       url: "{{ site.url }}{{ site.baseurl }}/calendars/all.ical",
        format: "ics",
      }],
      eventClick: function(info) {
