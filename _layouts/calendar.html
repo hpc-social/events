@@ -9,14 +9,20 @@ layout: page
 .a447 {
   background-color: red;
 }
+.fc-event-title-container {
+  cursor: pointer;
+}
 </style>
 
 {{ content }}
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.css" />
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-9">
     <div id='calendar'></div>
+  </div>
+  <div class="col-md-3">
+    <div id='details'></div>
   </div>
 </div>
 
@@ -37,7 +43,7 @@ layout: page
  document.addEventListener('DOMContentLoaded', function() {
    var calendarEl = document.getElementById('calendar');
    calendar = new FullCalendar.Calendar(calendarEl, {
-     timeZone: 'UTC', 
+     timeZone: 'local', 
      headerToolbar: {
        left: 'prev,next today',
        center: 'title',
@@ -54,14 +60,18 @@ layout: page
      },
      eventSources: [{
        resourceId: 'all',
-       url: "{{ site.url }}{{ site.baseurl }}/calendars/all.ical",
+       url: "http://127.0.0.1:4000{{ site.baseurl }}/calendars/all.ical",
        format: "ics",
      }],
      eventClick: function(info) {
-       console.log('TODO vsoch make me pretty!')
+       $('.fc-event-title-container').css('border-color', 'none')
+       $('.fc-event-title-container').css('border-width', '0px')
+       $("#details").html("<h3>Details</h3><br><p>" + info.event.title + "</p>")
+       info.el.style.borderColor = 'aqua';
+       info.el.style.borderWidth = '5px';
      },
      eventRender: function(event, eventElement) {
-      console.log(event)
+      console.log(event)      
       // if (event.title == "Booked") {
       //  eventElement.css('background-color', 'green');
       // }

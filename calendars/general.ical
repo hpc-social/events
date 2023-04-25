@@ -18,10 +18,10 @@ SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
  d benefits of free software and open source solutions. Participation and a
  ttendance is totally free\, though the organisers gratefully accept donati
  ons and sponsorship.
-DTSTART:20230204T090000
-DTEND:20230204T170000
+DTSTART:20230204T160000
+DTEND:20230205T000000
 DTSTAMP:20230102T001000Z
-UID:fb7eadc4-ad48-47f2-8fd4-00e9380144cf
+UID:ddc3f21a-1c60-4ca8-89de-64a08dddad7c
 CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
 DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
  t approaches to scientific computing. HPC typically deals with smaller\, h
@@ -49,10 +49,10 @@ END:VEVENT
 BEGIN:VEVENT
 SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
  asyBuild community\, see https://easybuild.io/eum23/#organisation
-DTSTART:20230424T100000
-DTEND:20230426T180000
+DTSTART:20230424T170000
+DTEND:20230427T010000
 DTSTAMP:20230102T001000Z
-UID:13e6a058-0e4f-4d0d-ae7e-0b7e9e36fa26
+UID:8ca4784f-9387-4a33-94e6-6278306ffce2
 CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
  l
 DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
