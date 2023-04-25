@@ -9,10 +9,10 @@ X-WR-TIMEZONE:UTC
 BEGIN:VEVENT
 SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
  asyBuild community\, see https://easybuild.io/eum23/#organisation
-DTSTART:20230424T170000
-DTEND:20230427T010000
+DTSTART:20230424T100000
+DTEND:20230426T180000
 DTSTAMP:20230102T001000Z
-UID:9d3c2f74-9f1e-4587-a18f-f5fa59b961ef
+UID:7e69086c-ce44-4e46-bb49-4a479d2e1812
 CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
  l
 DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac

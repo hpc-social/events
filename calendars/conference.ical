@@ -9,10 +9,10 @@ X-WR-TIMEZONE:UTC
 BEGIN:VEVENT
 SUMMARY:Supercomputing 2023 in Denver\, Colorado hosted by Colorado Conven
  tion Center\, Sponsored by sighpc\, IEEE\, TCHPC
-DTSTART:20231112T140000
-DTEND:20231118T020000
+DTSTART:20231112T070000
+DTEND:20231117T190000
 DTSTAMP:20230102T001000Z
-UID:7e504010-0e0a-47be-909a-6ab2e227855b
+UID:ce5fa546-41b8-4672-8c5d-a14b8ac5d2c4
 CATEGORIES:Conference
 DESCRIPTION:The International Conference for High Performance Computing\, 
  Networking\, Storage\, and Analysis (SC23)
@@ -21,10 +21,10 @@ NAME:Supercomputing 2023
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Container Plumbing 2023 in virtual hosted by RedHat
-DTSTART:20230322T200000
-DTEND:20230323T010000
+DTSTART:20230322T130000
+DTEND:20230322T180000
 DTSTAMP:20230102T001000Z
-UID:5a4e733d-3007-46df-a81c-f032254f40ec
+UID:e847ed4a-35b6-4221-a717-8c36dee4900b
 CATEGORIES:Conference
 DESCRIPTION:The Virtual Conference for The Plumbing That Makes The Cloud W
  ork
@@ -43,10 +43,10 @@ SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
  d benefits of free software and open source solutions. Participation and a
  ttendance is totally free\, though the organisers gratefully accept donati
  ons and sponsorship.
-DTSTART:20230204T160000
-DTEND:20230205T000000
+DTSTART:20230204T090000
+DTEND:20230204T170000
 DTSTAMP:20230102T001000Z
-UID:a62dcf31-77b7-4257-b3b3-138987891800
+UID:31f14ff2-2e7b-4610-bf8b-4c12e3320546
 CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
 DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
  t approaches to scientific computing. HPC typically deals with smaller\, h
