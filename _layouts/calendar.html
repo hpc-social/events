@@ -60,7 +60,7 @@ layout: page
      },
      eventSources: [{
        resourceId: 'all',
-       url: "http://127.0.0.1:4000{{ site.baseurl }}/calendars/all.ical",
+       url: "{{ site.url }}{{ site.baseurl }}/calendars/all.ical",
        format: "ics",
      }],
      eventClick: function(info) {
