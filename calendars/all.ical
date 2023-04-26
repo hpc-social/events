@@ -18,10 +18,10 @@ SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
  d benefits of free software and open source solutions. Participation and a
  ttendance is totally free\, though the organisers gratefully accept donati
  ons and sponsorship.
-DTSTART:20230204T160000
-DTEND:20230205T000000
+DTSTART:20230204T090000
+DTEND:20230204T170000
 DTSTAMP:20230102T001000Z
-UID:7bd6d216-8a25-43ca-be06-469aed5888e9
+UID:54f671c1-5b42-4275-b2af-e3497f52f3bb
 CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
 DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
  t approaches to scientific computing. HPC typically deals with smaller\, h
@@ -49,10 +49,10 @@ END:VEVENT
 BEGIN:VEVENT
 SUMMARY:ECP Birds of a Feathers in virtual hosted by Exascale Computing Pr
  oject
-DTSTART:20230214T180000
-DTEND:20230217T000000
+DTSTART:20230214T110000
+DTEND:20230216T170000
 DTSTAMP:20230102T001000Z
-UID:6bcef7b4-c6fc-4b21-91ed-75b4de11bc45
+UID:242af0bf-9002-4105-8c34-6c25f763bb95
 CATEGORIES:Community Meeting
 DESCRIPTION:Birds of a Feather during the Exascale Computing
 LOCATION:virtual
@@ -61,10 +61,10 @@ END:VEVENT
 BEGIN:VEVENT
 SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
  asyBuild community\, see https://easybuild.io/eum23/#organisation
-DTSTART:20230424T170000
-DTEND:20230427T010000
+DTSTART:20230424T100000
+DTEND:20230426T180000
 DTSTAMP:20230102T001000Z
-UID:71f9d8b7-826a-4825-883f-dde85ea646df
+UID:366d8564-58a2-4c3e-b839-98828821fd6a
 CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
  l
 DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
