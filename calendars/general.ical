@@ -21,7 +21,7 @@ SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
 DTSTART:20230204T090000
 DTEND:20230204T170000
 DTSTAMP:20230102T001000Z
-UID:f7fe7455-0aa5-4b08-9c2b-7bd76996a471
+UID:f36958ba-556a-4f9f-9f64-21ce72545129
 CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
 DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
  t approaches to scientific computing. HPC typically deals with smaller\, h
@@ -52,7 +52,7 @@ SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
 DTSTART:20230424T100000
 DTEND:20230426T180000
 DTSTAMP:20230102T001000Z
-UID:faede4b9-dcda-45ca-b95c-9fab05aedcfc
+UID:5eb05d1c-e0c4-47de-8e0e-aa9b6071cda2
 CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
  l
 DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
@@ -732,21 +732,6 @@ SEQUENCE:1
 CREATED:20230104T111733Z
 DESCRIPTION: Join URL: https://aka.ms/hpc_hallway
 LAST-MODIFIED:20230104T111748Z
-LOCATION:
-STATUS:CONFIRMED
-TITLE:HPC-HUDDLE
-TRANSP:OPAQUE
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:HPC Huddle
-DTSTART:20231006T180000Z
-DTEND:20231006T180000Z
-DTSTAMP:20231006T180000Z
-UID:hpc-huddle_2023_18_friday
-SEQUENCE:0
-CREATED:20230104T111815Z
-DESCRIPTION: Join URL: https://aka.ms/hpc_hallway
-LAST-MODIFIED:20230104T111815Z
 LOCATION:
 STATUS:CONFIRMED
 TITLE:HPC-HUDDLE
