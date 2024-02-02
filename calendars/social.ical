@@ -12,7 +12,7 @@ SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
 DTSTART:20230424T100000
 DTEND:20230426T180000
 DTSTAMP:20230102T001000Z
-UID:158b735b-6ee4-4a3c-99bb-3d74c4b997b0
+UID:244c851a-4cc5-4da7-84ce-dabac40f6ec1
 CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
  l
 DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
@@ -21,21 +21,6 @@ DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
  .
 LOCATION:Imperial College London
 NAME:EasyBuild User Meeting 2023
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:HPC Huddle
-DTSTART:20240201T090000Z
-DTEND:20240201T090000Z
-DTSTAMP:20240201T090000Z
-UID:hpc-huddle_2023_9_thursday
-SEQUENCE:1
-CREATED:20230104T110841Z
-DESCRIPTION: Join URL: https://aka.ms/hpc_hallway
-LAST-MODIFIED:20230104T111049Z
-LOCATION:
-STATUS:CONFIRMED
-TITLE:HPC-HUDDLE
-TRANSP:OPAQUE
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:HPC Huddle
