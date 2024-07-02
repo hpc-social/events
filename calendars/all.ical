@@ -21,7 +21,7 @@ SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
 DTSTART:20230204T090000
 DTEND:20230204T170000
 DTSTAMP:20230102T001000Z
-UID:3f6655b7-a938-4319-b2a0-365d4f2e4cae
+UID:76bcc9cc-bbb6-4c13-abbb-e314073feeab
 CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
 DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
  t approaches to scientific computing. HPC typically deals with smaller\, h
@@ -52,7 +52,7 @@ SUMMARY:ECP Birds of a Feathers in virtual hosted by Exascale Computing Pr
 DTSTART:20230214T110000
 DTEND:20230216T170000
 DTSTAMP:20230102T001000Z
-UID:39ca06d5-32fc-4025-8048-e345afbadf93
+UID:173a5ecb-07c8-4f19-866a-0ca70d3c4196
 CATEGORIES:Community Meeting
 DESCRIPTION:Birds of a Feather during the Exascale Computing
 LOCATION:virtual
@@ -64,7 +64,7 @@ SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
 DTSTART:20230424T100000
 DTEND:20230426T180000
 DTSTAMP:20230102T001000Z
-UID:b312b484-6bc6-460c-ab88-88b556ab8875
+UID:03a22e83-389d-4b91-847e-9f163f6a8987
 CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
  l
 DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
@@ -439,6 +439,21 @@ SUMMARY:HPC Huddle
 DTSTART:20250501T160000Z
 DTEND:20250501T160000Z
 DTSTAMP:20250501T160000Z
+UID:hpc-huddle_2023_16_thursday
+SEQUENCE:1
+CREATED:20230104T111018Z
+DESCRIPTION: Join URL: https://aka.ms/hpc_hallway
+LAST-MODIFIED:20230104T111554Z
+LOCATION:
+STATUS:CONFIRMED
+TITLE:HPC-HUDDLE
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:HPC Huddle
+DTSTART:20250626T160000Z
+DTEND:20250626T160000Z
+DTSTAMP:20250626T160000Z
 UID:hpc-huddle_2023_16_thursday
 SEQUENCE:1
 CREATED:20230104T111018Z
