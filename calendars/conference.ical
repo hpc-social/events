@@ -12,7 +12,7 @@ SUMMARY:Supercomputing 2023 in Denver\, Colorado hosted by Colorado Conven
 DTSTART:20231112T070000
 DTEND:20231117T190000
 DTSTAMP:20230102T001000Z
-UID:af942729-b059-488e-9980-3529f409dbdc
+UID:6170e668-219b-42ff-825c-6c4ad67f0f92
 CATEGORIES:Conference
 DESCRIPTION:The International Conference for High Performance Computing\, 
  Networking\, Storage\, and Analysis (SC23)
@@ -24,7 +24,7 @@ SUMMARY:Container Plumbing 2023 in virtual hosted by RedHat
 DTSTART:20230322T130000
 DTEND:20230322T180000
 DTSTAMP:20230102T001000Z
-UID:006a6ced-565c-4a00-b5d2-7ad81d3eedd1
+UID:4fce95e5-ec25-409c-82fb-9b5585525676
 CATEGORIES:Conference
 DESCRIPTION:The Virtual Conference for The Plumbing That Makes The Cloud W
  ork
@@ -46,7 +46,7 @@ SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
 DTSTART:20230204T090000
 DTEND:20230204T170000
 DTSTAMP:20230102T001000Z
-UID:e1b96f4f-0403-45f4-998b-701ef8820a06
+UID:bc6f53b0-9aff-4ef0-b226-5fdf3c559ef0
 CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
 DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
  t approaches to scientific computing. HPC typically deals with smaller\, h
