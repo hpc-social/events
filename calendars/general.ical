@@ -21,7 +21,7 @@ SUMMARY:FOSDEM HPC\, Big Data and Data Science devroom in Brussels\, Belgi
 DTSTART:20230204T090000
 DTEND:20230204T170000
 DTSTAMP:20230102T001000Z
-UID:5460deec-c9b7-490c-9ce3-5eb9b3ee3a6b
+UID:9c142fba-d7cb-47f3-9ed4-1da5b1f37655
 CATEGORIES:Conference\,  Community Meeting\,  Talk or Presentation
 DESCRIPTION:High Performance Computing (HPC) and Big Data are two importan
  t approaches to scientific computing. HPC typically deals with smaller\, h
@@ -52,7 +52,7 @@ SUMMARY:EasyBuild User Meeting 2023 in Imperial College London hosted by E
 DTSTART:20230424T100000
 DTEND:20230426T180000
 DTSTAMP:20230102T001000Z
-UID:fe5d6cca-1db4-4cb8-8f48-f842dd57a1b4
+UID:fd359d9f-b3fc-493b-8108-28087013a04e
 CATEGORIES:Hackathon\,  Community Meeting\,  Talk or Presentation\,  Socia
  l
 DESCRIPTION:The EasyBuild User Meeting (EUM) is an open and highly interac
