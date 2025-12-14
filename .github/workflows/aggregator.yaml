@@ -29,7 +29,7 @@ jobs:
         run: |
           git config user.name 'GitHub Action'
           git config user.email 'action@github.com'
-          # Commit the generated files in the data folder
-          git add docs/data/combined.json docs/data/calendar.ics
+          # We only commit these two now
+          git add docs/data/events.json docs/data/calendar.ics
           git commit -m "Update aggregated calendar [skip ci]" || echo "No changes"
           git push

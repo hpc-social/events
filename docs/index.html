@@ -96,17 +96,26 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <!-- Controls -->
+        
+        <!-- Controls Bar -->
         <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
             <div class="relative w-full sm:max-w-md">
                 <input type="text" x-model="searchQuery" @input="filterEvents" class="block w-full pl-10 pr-4 py-2.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-hpc-cyan focus:outline-none transition shadow-sm" placeholder="Search events...">
                 <svg class="h-5 w-5 text-gray-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
+
             <div class="bg-gray-200 dark:bg-gray-700 p-1 rounded-lg flex shadow-inner">
+                <!-- 1. Cards -->
                 <button @click="viewMode = 'grid'" :class="viewMode === 'grid' ? 'bg-white dark:bg-gray-600 text-hpc-teal dark:text-hpc-cyan shadow-sm' : 'text-gray-500 dark:text-gray-400'" class="px-4 py-2 rounded-md text-sm font-bold transition flex items-center">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
                     Cards
                 </button>
+                <!-- 2. List (New) -->
+                <button @click="viewMode = 'list'" :class="viewMode === 'list' ? 'bg-white dark:bg-gray-600 text-hpc-teal dark:text-hpc-cyan shadow-sm' : 'text-gray-500 dark:text-gray-400'" class="px-4 py-2 rounded-md text-sm font-bold transition flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                    List
+                </button>
+                <!-- 3. Calendar -->
                 <button @click="switchToCalendar()" :class="viewMode === 'calendar' ? 'bg-white dark:bg-gray-600 text-hpc-teal dark:text-hpc-cyan shadow-sm' : 'text-gray-500 dark:text-gray-400'" class="px-4 py-2 rounded-md text-sm font-bold transition flex items-center">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     Calendar
@@ -114,7 +123,7 @@
             </div>
         </div>
 
-        <!-- VIEW 1: EVENT CARDS -->
+        <!-- VIEW 1: EVENT CARDS (Default) -->
         <div x-show="viewMode === 'grid'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <template x-for="event in filteredEvents" :key="event.id">
                 <div @click="openEvent(event)" class="event-card bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl group">
@@ -149,12 +158,57 @@
                 </div>
             </template>
             <div x-show="filteredEvents.length === 0" class="col-span-full text-center py-12">
-                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">No events found</h3>
             </div>
         </div>
 
-        <!-- VIEW 2: CALENDAR -->
+        <!-- VIEW 2: LIST (New) -->
+        <div x-show="viewMode === 'list'" class="space-y-8">
+            <template x-for="group in getGroupedEvents()" :key="group.label">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 overflow-hidden">
+                    <div class="bg-gray-50 dark:bg-gray-700/50 px-6 py-3 border-b border-gray-100 dark:border-gray-700">
+                        <h3 class="text-lg font-bold text-hpc-teal dark:text-hpc-cyan uppercase tracking-wide" x-text="group.label"></h3>
+                    </div>
+                    <div class="divide-y divide-gray-100 dark:divide-gray-700">
+                        <template x-for="event in group.events" :key="event.id">
+                            <div @click="openEvent(event)" class="p-4 sm:p-6 flex flex-col sm:flex-row gap-4 hover:bg-gray-50 dark:hover:bg-gray-700/50 transition cursor-pointer group">
+                                <!-- Date Box -->
+                                <div class="flex-shrink-0 flex sm:flex-col items-center sm:items-start gap-2 sm:gap-0 sm:w-24">
+                                    <span class="text-2xl font-bold text-gray-900 dark:text-white leading-none" x-text="new Date(event.start).getDate()"></span>
+                                    <span class="text-sm font-medium text-gray-500 dark:text-gray-400 uppercase" x-text="new Date(event.start).toLocaleString('default', {weekday:'short'})"></span>
+                                </div>
+                                <!-- Content -->
+                                <div class="flex-1">
+                                    <div class="flex justify-between items-start">
+                                        <h4 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-hpc-teal dark:group-hover:text-hpc-cyan transition-colors" x-text="event.title"></h4>
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200" x-text="event.category || event.extendedProps?.category"></span>
+                                    </div>
+                                    <div class="mt-1 flex flex-col sm:flex-row gap-2 sm:gap-6 text-sm text-gray-500 dark:text-gray-400">
+                                        <div class="flex items-center">
+                                            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                            <span x-text="formatDateRange(event.start, event.end)"></span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                            <span x-text="event.location || event.extendedProps?.location || 'Online'"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Arrow -->
+                                <div class="hidden sm:flex items-center text-gray-300 group-hover:text-hpc-teal dark:group-hover:text-hpc-cyan transition">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+            <div x-show="filteredEvents.length === 0" class="text-center py-12">
+                <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">No events found</h3>
+            </div>
+        </div>
+
+        <!-- VIEW 3: CALENDAR -->
         <div x-show="viewMode === 'calendar'" class="bg-white dark:bg-gray-800 p-2 sm:p-6 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 relative">
             <div id='calendar' class="mt-2"></div>
         </div>
@@ -267,7 +321,6 @@
                                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Event Link (URL)</label>
                                     <input type="url" x-model="form.url" placeholder="https://..." class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
                                 </div>
-                                <!-- All Day Toggle + Date/Time -->
                                 <div class="grid grid-cols-2 gap-4">
                                     <div class="col-span-2 flex items-center">
                                         <input type="checkbox" id="allDay" x-model="form.allDay" class="h-4 w-4 text-hpc-blue focus:ring-hpc-blue border-gray-300 rounded">
@@ -374,8 +427,8 @@
                     var calendarEl = document.getElementById('calendar');
                     this.calendar = new FullCalendar.Calendar(calendarEl, {
                         initialView: 'dayGridMonth',
-                        headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek,listYear' },
-                        events: 'data/combined.json', 
+                        headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek' }, // REMOVED listYear
+                        // NO 'events' SOURCE HERE. We load manually below.
                         eventColor: '#187a99',
                         height: 'auto',
                         eventClick: (info) => {
@@ -389,7 +442,6 @@
 
                 openEvent(event) {
                     let plain = {};
-                    
                     if (event.toPlainObject) {
                         const raw = event.toPlainObject({ collapseExtendedProps: true });
                         plain = {
@@ -402,29 +454,44 @@
                             id: event.id
                         };
                     } else {
-                        plain = { 
-                            ...event,
-                            ...event.extendedProps
-                        };
+                        plain = { ...event, ...event.extendedProps };
                     }
-
-                    // ROBUST URL EXTRACTION
                     let foundUrl = plain.url || (plain.extendedProps && plain.extendedProps.url) || null;
                     plain.url = foundUrl;
-
                     this.selectedEvent = plain;
                 },
 
                 async fetchEvents() {
                     try {
-                        let response = await fetch('data/combined.json');
-                        if (!response.ok) response = await fetch('data/events.json');
-                        if (response.ok) {
-                            this.allEvents = await response.json();
-                            this.allEvents.sort((a,b) => new Date(a.start) - new Date(b.start));
-                            this.filteredEvents = this.allEvents;
+                        const response = await fetch('data/events.json');
+                        if (!response.ok) throw new Error("Failed to load events.json");
+                        
+                        let rawEvents = await response.json();
+                        
+                        // Deduplicate logic
+                        const uniqueEvents = [];
+                        const ids = new Set();
+                        rawEvents.forEach(e => {
+                            if (!ids.has(e.id)) {
+                                ids.add(e.id);
+                                uniqueEvents.push(e);
+                            }
+                        });
+
+                        // Populate Grid
+                        this.allEvents = uniqueEvents;
+                        this.allEvents.sort((a,b) => new Date(a.start) - new Date(b.start));
+                        this.filteredEvents = this.allEvents;
+
+                        // Populate Calendar
+                        if (this.calendar) {
+                            this.calendar.removeAllEvents();
+                            this.calendar.addEventSource(uniqueEvents);
                         }
-                    } catch(e) { console.error("Error loading events:", e); }
+
+                    } catch(e) { 
+                        console.error("Error loading events:", e); 
+                    }
                 },
 
                 filterEvents() {
@@ -441,13 +508,36 @@
                     }
                 },
 
+                // Helper for the new List View
+                getGroupedEvents() {
+                    const groups = [];
+                    // filteredEvents is already sorted by date in fetchEvents
+                    this.filteredEvents.forEach(event => {
+                        const date = new Date(event.start);
+                        const label = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+                        
+                        let lastGroup = groups[groups.length - 1];
+                        if (!lastGroup || lastGroup.label !== label) {
+                            groups.push({ label: label, events: [] });
+                            lastGroup = groups[groups.length - 1];
+                        }
+                        lastGroup.events.push(event);
+                    });
+                    return groups;
+                },
+
                 formatDateRange(start, end) {
                     if(!start) return '';
                     let dStart = new Date(start);
-                    let dEnd = end ? new Date(end) : null;
+                    // Check for All Day (often missing time or set to midnight boundaries with specific flags)
+                    // Simple heuristic: if input string is YYYY-MM-DD or time is 00:00
+                    // But here we rely on the display requirement.
+                    
                     const options = { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' };
                     let s = dStart.toLocaleDateString('en-US', options);
-                    if (dEnd) {
+                    
+                    if (end) {
+                        let dEnd = new Date(end);
                         const isSameDay = dStart.toDateString() === dEnd.toDateString();
                         let e = isSameDay 
                             ? dEnd.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) 

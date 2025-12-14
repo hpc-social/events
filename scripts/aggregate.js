@@ -2,11 +2,11 @@ const fs = require('fs');
 const ical = require('node-ical');
 const axios = require('axios');
 
-// --- CONFIGURATION: Updated for docs/data structure ---
+// --- CONFIGURATION ---
 const FILES = {
-    local: 'docs/data/events.json',
+    // We now read AND write to the same file
+    data: 'docs/data/events.json',
     feeds: 'docs/data/feeds.json',
-    outputJson: 'docs/data/combined.json',
     outputIcs: 'docs/data/calendar.ics'
 };
 
@@ -60,19 +60,22 @@ function generateICS(events) {
 // --- MAIN ---
 async function run() {
     console.log("--- Starting Aggregator ---");
-    let allEvents = [];
-
-    // 1. Load Local
+    
+    // 1. Load Existing Data
+    let existingEvents = [];
     try {
-        if (fs.existsSync(FILES.local)) {
-            const local = JSON.parse(fs.readFileSync(FILES.local, 'utf8'));
-            const formattedLocal = local.map(e => ({ ...e, image: e.image || null }));
-            allEvents = [...formattedLocal];
-            console.log(`Loaded ${local.length} local events.`);
+        if (fs.existsSync(FILES.data)) {
+            existingEvents = JSON.parse(fs.readFileSync(FILES.data, 'utf8'));
         }
-    } catch (e) { console.warn(`Warning: Could not load ${FILES.local}`); }
+    } catch (e) { console.warn(`Warning: Could not load ${FILES.data}`); }
 
-    // 2. Load Feeds
+    // 2. Filter out old External events
+    // We keep events that DO NOT have the 'isFeed' flag.
+    // This preserves manual events.
+    let manualEvents = existingEvents.filter(e => !e.extendedProps?.isFeed);
+    console.log(`Preserving ${manualEvents.length} manual events.`);
+
+    // 3. Load Feeds List
     let feeds = [];
     try {
         if (fs.existsSync(FILES.feeds)) {
@@ -80,7 +83,9 @@ async function run() {
         }
     } catch (e) { console.warn(`Warning: Could not load ${FILES.feeds}`); }
 
-    // 3. Process External
+    // 4. Process External Feeds
+    let newFeedEvents = [];
+    
     for (const url of feeds) {
         try {
             console.log(`Fetching feed: ${url}`);
@@ -93,14 +98,16 @@ async function run() {
                     let image = null;
                     if (ev.url) image = await fetchOgImage(ev.url);
 
-                    allEvents.push({
+                    newFeedEvents.push({
                         id: ev.uid || Math.random().toString(36).substr(2, 9),
                         title: ev.summary || 'Untitled Event',
                         start: ev.start,
                         end: ev.end,
                         url: ev.url || '',
                         image: image,
+                        // We mark these as Feed events so we can replace them next time
                         extendedProps: { 
+                            isFeed: true, // <--- CRITICAL FLAG
                             category: 'External', 
                             location: ev.location || '', 
                             description: ev.description || '' 
@@ -111,10 +118,17 @@ async function run() {
         } catch (e) { console.error(`Error fetching feed: ${e.message}`); }
     }
 
-    // 4. Save Outputs
-    fs.writeFileSync(FILES.outputJson, JSON.stringify(allEvents, null, 2));
-    const icsContent = generateICS(allEvents);
+    // 5. Merge Manual + New Feed Events
+    const finalEvents = [...manualEvents, ...newFeedEvents];
+
+    // 6. Write back to Single Source of Truth
+    console.log(`Writing ${finalEvents.length} total events to ${FILES.data}...`);
+    fs.writeFileSync(FILES.data, JSON.stringify(finalEvents, null, 2));
+
+    // 7. Generate ICS for subscribers
+    const icsContent = generateICS(finalEvents);
     fs.writeFileSync(FILES.outputIcs, icsContent);
+    
     console.log("--- Done ---");
 }
 
