@@ -1,0 +1,35 @@
+name: Aggregate Calendars
+on:
+  schedule:
+    - cron: '0 */6 * * *' # Every 6 hours
+  repository_dispatch:
+    types: [run-aggregator]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with: { node-version: 18 }
+
+      - name: Install Dependencies
+        run: npm install node-ical axios
+
+      - name: Run Aggregator
+        run: node scripts/aggregate.js
+
+      - name: Commit Results
+        run: |
+          git config user.name 'GitHub Action'
+          git config user.email 'action@github.com'
+          # Commit the generated files in the data folder
+          git add docs/data/combined.json docs/data/calendar.ics
+          git commit -m "Update aggregated calendar [skip ci]" || echo "No changes"
+          git push

@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//HPC Social//Community Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:hpc-social-init-001
+DTSTAMP:20251214T000000Z
+DTSTART:20251214T120000Z
+DTEND:20251214T130000Z
+SUMMARY:Calendar Feed Active
+DESCRIPTION:This is a placeholder event to confirm your subscription to the HPC Social calendar is working.
+LOCATION:HPC Social
+END:VEVENT
+END:VCALENDAR

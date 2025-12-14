@@ -2,40 +2,31 @@ const fs = require('fs');
 const ical = require('node-ical');
 const axios = require('axios');
 
-// --- CONFIGURATION ---
+// --- CONFIGURATION: Updated for docs/data structure ---
 const FILES = {
-    local: 'events.json',
-    feeds: 'feeds.json',
-    outputJson: 'combined.json',
-    outputIcs: 'calendar.ics'
+    local: 'docs/data/events.json',
+    feeds: 'docs/data/feeds.json',
+    outputJson: 'docs/data/combined.json',
+    outputIcs: 'docs/data/calendar.ics'
 };
 
 // --- HELPER: Fetch Open Graph Image ---
 async function fetchOgImage(url) {
     if (!url) return null;
     try {
-        // Short timeout to prevent hanging the build
         const res = await axios.get(url, { 
             timeout: 3000, 
-            headers: { 
-                'User-Agent': 'Mozilla/5.0 (compatible; HPC-Calendar-Bot/1.0)' 
-            } 
+            headers: { 'User-Agent': 'Mozilla/5.0 (compatible; HPC-Calendar-Bot/1.0)' } 
         });
-        
-        // Simple regex to grab the og:image content
         const match = res.data.match(/<meta property="og:image" content="([^"]+)"/i);
         return match ? match[1] : null;
-    } catch (e) {
-        // Silent failure is acceptable for metadata fetching
-        return null;
-    }
+    } catch (e) { return null; }
 }
 
-// --- HELPER: Generate ICS File Content ---
+// --- HELPER: Generate ICS ---
 function generateICS(events) {
     const formatDate = (date) => {
         if (!date) return '';
-        // Format: YYYYMMDDTHHmmSSZ
         return new Date(date).toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
     };
 
@@ -53,16 +44,11 @@ function generateICS(events) {
         lines.push(`DTSTAMP:${formatDate(new Date())}`);
         lines.push(`DTSTART:${formatDate(e.start)}`);
         if (e.end) lines.push(`DTEND:${formatDate(e.end)}`);
-        
         lines.push(`SUMMARY:${e.title}`);
-        
-        // Clean description for ICS (escape newlines)
         const desc = (e.extendedProps?.description || e.description || '').replace(/\n/g, '\\n');
         if (desc) lines.push(`DESCRIPTION:${desc}`);
-        
         const loc = e.extendedProps?.location || e.location || '';
         if (loc) lines.push(`LOCATION:${loc}`);
-        
         if (e.url) lines.push(`URL:${e.url}`);
         lines.push('END:VEVENT');
     });
@@ -71,54 +57,41 @@ function generateICS(events) {
     return lines.join('\r\n');
 }
 
-// --- MAIN EXECUTION ---
+// --- MAIN ---
 async function run() {
     console.log("--- Starting Aggregator ---");
     let allEvents = [];
 
-    // 1. Load Local Events
+    // 1. Load Local
     try {
         if (fs.existsSync(FILES.local)) {
             const local = JSON.parse(fs.readFileSync(FILES.local, 'utf8'));
-            // Ensure local events have the image structure
-            const formattedLocal = local.map(e => ({
-                ...e,
-                // If you ever want to support manual image URLs in events.json, add them here
-                image: e.image || null 
-            }));
+            const formattedLocal = local.map(e => ({ ...e, image: e.image || null }));
             allEvents = [...formattedLocal];
             console.log(`Loaded ${local.length} local events.`);
         }
-    } catch (e) {
-        console.warn(`Warning: Could not load ${FILES.local}`);
-    }
+    } catch (e) { console.warn(`Warning: Could not load ${FILES.local}`); }
 
-    // 2. Load Feed List
+    // 2. Load Feeds
     let feeds = [];
     try {
         if (fs.existsSync(FILES.feeds)) {
             feeds = JSON.parse(fs.readFileSync(FILES.feeds, 'utf8'));
         }
-    } catch (e) {
-        console.warn(`Warning: Could not load ${FILES.feeds}`);
-    }
+    } catch (e) { console.warn(`Warning: Could not load ${FILES.feeds}`); }
 
-    // 3. Process External Feeds
+    // 3. Process External
     for (const url of feeds) {
         try {
             console.log(`Fetching feed: ${url}`);
             const res = await axios.get(url);
             const data = ical.parseICS(res.data);
             
-            let count = 0;
             for (let k in data) {
                 const ev = data[k];
                 if (ev.type === 'VEVENT') {
-                    // Try to fetch image if URL exists
                     let image = null;
-                    if (ev.url) {
-                        image = await fetchOgImage(ev.url);
-                    }
+                    if (ev.url) image = await fetchOgImage(ev.url);
 
                     allEvents.push({
                         id: ev.uid || Math.random().toString(36).substr(2, 9),
@@ -133,24 +106,15 @@ async function run() {
                             description: ev.description || '' 
                         }
                     });
-                    count++;
                 }
             }
-            console.log(`  -> Processed ${count} events.`);
-        } catch (e) {
-            console.error(`  -> Error fetching feed: ${e.message}`);
-        }
+        } catch (e) { console.error(`Error fetching feed: ${e.message}`); }
     }
 
-    // 4. Save combined.json
-    console.log(`Writing ${allEvents.length} total events to ${FILES.outputJson}...`);
+    // 4. Save Outputs
     fs.writeFileSync(FILES.outputJson, JSON.stringify(allEvents, null, 2));
-
-    // 5. Generate and Save calendar.ics
-    console.log(`Generating ${FILES.outputIcs}...`);
     const icsContent = generateICS(allEvents);
     fs.writeFileSync(FILES.outputIcs, icsContent);
-
     console.log("--- Done ---");
 }
 

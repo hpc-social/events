@@ -23,7 +23,7 @@
                             cyan: '#00FFFF', 
                             teal: '#187a99', 
                             red: '#E02B37', 
-                            blue: 'rgb(0 61 175)', /* Requested Blue */
+                            blue: 'rgb(0 61 175)',
                             dark: '#222222', 
                             darker: '#1a1a1a',
                             light: '#F3F4F6' 
@@ -35,18 +35,14 @@
     </script>
 
     <!-- Libraries -->
-    <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- FullCalendar -->
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
 
     <style>
-        /* --- CALENDAR STYLES --- */
         :root { --fc-button-bg-color: #187a99; --fc-button-border-color: #187a99; }
         .fc-event { cursor: pointer; border:none; }
         [x-cloak] { display: none !important; }
 
-        /* FullCalendar Dark/Light Overrides */
         .fc-toolbar-title { font-weight: 700; color: #111827; }
         .dark .fc-toolbar-title { color: #f3f4f6; }
         .dark .fc-col-header-cell-cushion { color: #22d3ee; }
@@ -54,7 +50,6 @@
         .dark .fc-theme-standard td, .dark .fc-theme-standard th { border-color: #374151; }
         .dark .fc-button-primary { background-color: #187a99; border-color: #187a99; }
         
-        /* Card Hover Effect */
         .event-card:hover { transform: translateY(-4px); }
     </style>
 </head>
@@ -70,7 +65,7 @@
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-4">
                     <div class="relative w-12 h-12 flex-shrink-0">
-                        <img src="./img/logo.png" alt="HPC Social Logo" class="w-full h-full object-contain drop-shadow-md transform hover:scale-110 transition duration-300">
+                        <img src="img/logo.png" alt="HPC Social Logo" class="w-full h-full object-contain drop-shadow-md transform hover:scale-110 transition duration-300">
                     </div>
                     <div>
                         <h1 class="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">hpc<span class="text-hpc-teal dark:text-hpc-cyan">.social</span></h1>
@@ -78,23 +73,20 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-2 sm:gap-4">
-                    <!-- Subscribe -->
                     <div x-data="{ open: false }" class="relative">
                         <button @click="open = !open" @click.away="open = false" class="text-gray-500 hover:text-hpc-teal dark:text-gray-300 dark:hover:text-hpc-cyan font-medium text-sm flex items-center transition px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700">
                             <span class="hidden sm:inline mr-2">Subscribe</span>
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                         </button>
                         <div x-show="open" x-cloak class="absolute right-0 mt-2 w-60 bg-white dark:bg-gray-700 rounded-lg shadow-xl ring-1 ring-black ring-opacity-5 z-50 overflow-hidden border border-gray-100 dark:border-gray-600">
-                            <a :href="`https://calendar.google.com/calendar/r?cid=${encodeURIComponent(window.location.origin + window.location.pathname.replace('index.html', '') + 'calendar.ics')}`" target="_blank" class="block px-4 py-3 text-sm hover:bg-gray-50 dark:hover:bg-gray-600">Google Calendar</a>
-                            <a :href="window.location.origin + window.location.pathname.replace('index.html', '') + 'calendar.ics'" class="block px-4 py-3 text-sm hover:bg-gray-50 dark:hover:bg-gray-600 border-t border-gray-100 dark:border-gray-600">Copy iCal Link</a>
+                            <a :href="`https://calendar.google.com/calendar/r?cid=${encodeURIComponent(window.location.origin + window.location.pathname.replace('index.html', '') + 'data/calendar.ics')}`" target="_blank" class="block px-4 py-3 text-sm hover:bg-gray-50 dark:hover:bg-gray-600">Google Calendar</a>
+                            <a :href="window.location.origin + window.location.pathname.replace('index.html', '') + 'data/calendar.ics'" class="block px-4 py-3 text-sm hover:bg-gray-50 dark:hover:bg-gray-600 border-t border-gray-100 dark:border-gray-600">Copy iCal Link</a>
                         </div>
                     </div>
-                    <!-- Theme -->
                     <button @click="toggleTheme()" class="p-2 rounded-full text-gray-500 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 transition">
                         <svg x-show="!isDark" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                         <svg x-show="isDark" x-cloak class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
                     </button>
-                    <!-- Submit -->
                     <button @click="showSubmitModal = true" class="bg-hpc-blue hover:bg-blue-800 text-white px-5 py-2.5 rounded-full text-sm font-bold shadow-lg transition transform hover:-translate-y-0.5">
                         <span class="mr-2 text-hpc-cyan font-extrabold">+</span> Submit Event
                     </button>
@@ -104,22 +96,18 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        
-        <!-- Controls Bar -->
+        <!-- Controls -->
         <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-            <!-- Search -->
             <div class="relative w-full sm:max-w-md">
                 <input type="text" x-model="searchQuery" @input="filterEvents" class="block w-full pl-10 pr-4 py-2.5 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 focus:ring-2 focus:ring-hpc-cyan focus:outline-none transition shadow-sm" placeholder="Search events...">
                 <svg class="h-5 w-5 text-gray-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </div>
-
-            <!-- View Toggle -->
             <div class="bg-gray-200 dark:bg-gray-700 p-1 rounded-lg flex shadow-inner">
                 <button @click="viewMode = 'grid'" :class="viewMode === 'grid' ? 'bg-white dark:bg-gray-600 text-hpc-teal dark:text-hpc-cyan shadow-sm' : 'text-gray-500 dark:text-gray-400'" class="px-4 py-2 rounded-md text-sm font-bold transition flex items-center">
-                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
                     Cards
                 </button>
-                <button @click="viewMode = 'calendar'" :class="viewMode === 'calendar' ? 'bg-white dark:bg-gray-600 text-hpc-teal dark:text-hpc-cyan shadow-sm' : 'text-gray-500 dark:text-gray-400'" class="px-4 py-2 rounded-md text-sm font-bold transition flex items-center">
+                <button @click="switchToCalendar()" :class="viewMode === 'calendar' ? 'bg-white dark:bg-gray-600 text-hpc-teal dark:text-hpc-cyan shadow-sm' : 'text-gray-500 dark:text-gray-400'" class="px-4 py-2 rounded-md text-sm font-bold transition flex items-center">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     Calendar
                 </button>
@@ -130,8 +118,6 @@
         <div x-show="viewMode === 'grid'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <template x-for="event in filteredEvents" :key="event.id">
                 <div @click="openEvent(event)" class="event-card bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl group">
-                    
-                    <!-- Preview Image or Fallback Pattern -->
                     <div class="h-40 w-full bg-gray-200 dark:bg-gray-700 relative overflow-hidden">
                         <template x-if="event.image">
                             <img :src="event.image" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
@@ -140,38 +126,30 @@
                             <div class="w-full h-full relative" style="background-image: radial-gradient(#187a99 1px, transparent 1px); background-size: 10px 10px;">
                                 <div class="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div>
                                 <div class="absolute bottom-4 left-4">
-                                    <span class="inline-block px-2 py-1 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded text-xs font-bold text-hpc-teal dark:text-hpc-cyan uppercase" x-text="event.extendedProps?.category || 'Event'"></span>
+                                    <span class="inline-block px-2 py-1 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded text-xs font-bold text-hpc-teal dark:text-hpc-cyan uppercase" x-text="event.category || event.extendedProps?.category || 'Event'"></span>
                                 </div>
                             </div>
                         </template>
-                        <!-- Date Badge Overlay -->
                         <div class="absolute top-4 right-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-2 text-center min-w-[3.5rem]">
                             <p class="text-xs font-bold text-gray-500 uppercase" x-text="new Date(event.start).toLocaleString('default', {month:'short'})"></p>
                             <p class="text-xl font-bold text-gray-900 dark:text-white" x-text="new Date(event.start).getDate()"></p>
                         </div>
                     </div>
-
-                    <!-- Content -->
                     <div class="p-5">
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-2 leading-tight group-hover:text-hpc-teal dark:group-hover:text-hpc-cyan transition-colors" x-text="event.title"></h3>
-                        
                         <div class="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
                             <svg class="w-4 h-4 mr-2 text-hpc-teal dark:text-hpc-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             <span x-text="formatDateShort(event.start)"></span>
                         </div>
-                        
                         <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
                             <svg class="w-4 h-4 mr-2 text-hpc-teal dark:text-hpc-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            <span class="truncate" x-text="event.extendedProps?.location || 'Online'"></span>
+                            <span class="truncate" x-text="event.location || event.extendedProps?.location || 'Online'"></span>
                         </div>
                     </div>
                 </div>
             </template>
-            <!-- No Results State -->
             <div x-show="filteredEvents.length === 0" class="col-span-full text-center py-12">
-                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">No events found</h3>
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Try adjusting your search terms.</p>
             </div>
         </div>
 
@@ -187,70 +165,70 @@
         <div class="fixed inset-0 overflow-hidden">
             <div class="absolute inset-0 overflow-hidden">
                 <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-                    <div class="pointer-events-auto w-screen max-w-md transform transition ease-in-out duration-500 sm:duration-700">
+                    <div class="pointer-events-auto w-screen max-w-2xl transform transition ease-in-out duration-500 sm:duration-700">
                         <div class="flex h-full flex-col overflow-y-scroll bg-white dark:bg-gray-800 shadow-2xl">
-                            
-                            <!-- Hero Image Area -->
-                            <div class="relative h-48 bg-gray-200 dark:bg-gray-900">
+                            <div class="relative h-64 bg-gray-200 dark:bg-gray-900">
                                 <template x-if="selectedEvent?.image">
                                     <img :src="selectedEvent.image" class="w-full h-full object-cover">
                                 </template>
                                 <template x-if="!selectedEvent?.image">
-                                    <!-- Fallback Pattern -->
                                     <div class="w-full h-full flex items-center justify-center relative overflow-hidden bg-hpc-dark">
                                         <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#00FFFF 1px, transparent 1px); background-size: 20px 20px;"></div>
-                                        <svg class="h-20 w-20 text-hpc-cyan opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                        <svg class="h-24 w-24 text-hpc-cyan opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                     </div>
                                 </template>
-                                <!-- Close Button (Glassmorphism) -->
                                 <button @click="selectedEvent = null" class="absolute top-4 right-4 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full backdrop-blur-sm transition">
                                     <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
                                 </button>
                             </div>
-
-                            <div class="relative flex-1 px-6 pt-6 pb-12 text-gray-900 dark:text-gray-100">
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-hpc-teal/10 text-hpc-teal dark:text-hpc-cyan uppercase tracking-wide border border-hpc-teal/20 mb-4" x-text="selectedEvent?.extendedProps.category || 'Event'"></span>
-
-                                <h2 class="text-2xl font-bold leading-tight mb-6" x-text="selectedEvent?.title"></h2>
-                                
-                                <div class="space-y-6">
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="w-8 h-8 rounded-full bg-blue-50 dark:bg-gray-700 flex items-center justify-center text-hpc-teal dark:text-hpc-cyan">
-                                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                            </div>
-                                        </div>
-                                        <div class="ml-4">
-                                            <p class="text-sm font-medium">Date & Time</p>
-                                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1" x-text="formatDateRange(selectedEvent?.start, selectedEvent?.end)"></p>
+                            <div class="relative flex-1 px-8 pt-6 pb-12 text-gray-900 dark:text-gray-100">
+                                <div class="flex justify-between items-start">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-hpc-teal/10 text-hpc-teal dark:text-hpc-cyan uppercase tracking-wide border border-hpc-teal/20 mb-4" x-text="selectedEvent?.category || 'Event'"></span>
+                                </div>
+                                <h2 class="text-3xl font-bold leading-tight mb-6" x-text="selectedEvent?.title"></h2>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                                    <div class="flex items-start p-4 bg-gray-50 dark:bg-gray-700/30 rounded-lg">
+                                        <svg class="h-6 w-6 mt-0.5 text-hpc-teal dark:text-hpc-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        <div class="ml-3">
+                                            <p class="text-xs font-bold uppercase text-gray-500 dark:text-gray-400 tracking-wider">Time</p>
+                                            <p class="text-sm font-medium mt-1" x-text="formatDateRange(selectedEvent?.start, selectedEvent?.end)"></p>
                                         </div>
                                     </div>
-
-                                    <div class="flex items-start" x-show="selectedEvent?.extendedProps.location">
-                                        <div class="flex-shrink-0 mt-1">
-                                            <div class="w-8 h-8 rounded-full bg-blue-50 dark:bg-gray-700 flex items-center justify-center text-hpc-teal dark:text-hpc-cyan">
-                                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                            </div>
-                                        </div>
-                                        <div class="ml-4">
-                                            <p class="text-sm font-medium">Location</p>
-                                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1" x-text="selectedEvent?.extendedProps.location"></p>
+                                    <div class="flex items-start p-4 bg-gray-50 dark:bg-gray-700/30 rounded-lg">
+                                        <svg class="h-6 w-6 mt-0.5 text-hpc-teal dark:text-hpc-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                        <div class="ml-3">
+                                            <p class="text-xs font-bold uppercase text-gray-500 dark:text-gray-400 tracking-wider">Location</p>
+                                            <p class="text-sm font-medium mt-1" x-text="selectedEvent?.location || 'Online'"></p>
                                         </div>
                                     </div>
-
-                                    <div class="border-t border-gray-100 dark:border-gray-700 pt-6">
-                                        <h3 class="text-sm font-medium mb-3">About Event</h3>
-                                        <div class="prose prose-sm text-gray-500 dark:text-gray-400">
-                                            <p x-text="selectedEvent?.extendedProps.description || 'No description provided.'"></p>
+                                    <!-- Website Row -->
+                                    <div class="flex items-start p-4 bg-gray-50 dark:bg-gray-700/30 rounded-lg md:col-span-2" x-show="selectedEvent?.url">
+                                        <svg class="h-6 w-6 mt-0.5 text-hpc-teal dark:text-hpc-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                                        <div class="ml-3 overflow-hidden">
+                                            <p class="text-xs font-bold uppercase text-gray-500 dark:text-gray-400 tracking-wider">Website</p>
+                                            <a :href="selectedEvent?.url" target="_blank" class="text-sm font-medium mt-1 text-hpc-blue hover:underline block truncate" x-text="selectedEvent?.url"></a>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="prose prose-lg dark:prose-invert text-gray-600 dark:text-gray-300">
+                                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">About Event</h3>
+                                    <p class="whitespace-pre-line" x-text="selectedEvent?.description || 'No description provided.'"></p>
+                                </div>
                             </div>
-                            
-                            <div class="bg-gray-50 dark:bg-gray-900 px-6 py-4 border-t border-gray-200 dark:border-gray-700" x-show="selectedEvent?.url">
-                                <a :href="selectedEvent?.url" target="_blank" class="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-hpc-blue hover:bg-blue-800 transition">
-                                    Visit Event Page <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                                </a>
+                            <div class="bg-gray-50 dark:bg-gray-900 px-6 py-4 border-t border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row gap-3">
+                                <template x-if="selectedEvent?.url">
+                                    <a :href="selectedEvent.url" target="_blank" class="flex-1 flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-bold text-white bg-hpc-blue hover:bg-blue-800 transition">
+                                        Visit Event Page <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                    </a>
+                                </template>
+                                <div class="flex gap-2">
+                                    <button @click="addToGoogleCalendar(selectedEvent)" class="flex-1 sm:flex-none flex items-center justify-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition" title="Add to Google Calendar">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1 6h2v5h4.15l.85 1.6-6 1.4-1-8zm7 11h-12v-2h12v2z"/></svg>
+                                    </button>
+                                    <button @click="downloadSingleIcs(selectedEvent)" class="flex-1 sm:flex-none flex items-center justify-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition" title="Download .ics">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -279,13 +257,42 @@
                                 <button type="button" @click="type='feed'" :class="type==='feed' ? 'bg-white dark:bg-gray-600 text-hpc-teal dark:text-white shadow' : 'text-gray-500 dark:text-gray-400'" class="w-1/2 py-2 rounded-md text-sm font-medium transition-all">Feed (.ics)</button>
                             </div>
                             <div x-show="type === 'single'" class="space-y-4">
-                                <input type="text" x-model="form.title" placeholder="Title" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2">
-                                <input type="datetime-local" x-model="form.start" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2">
-                                <input type="text" x-model="form.location" placeholder="Location" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Event Title *</label>
+                                    <input type="text" x-model="form.title" required class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Event Link (URL)</label>
+                                    <input type="url" x-model="form.url" placeholder="https://..." class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Start *</label>
+                                        <input type="datetime-local" x-model="form.start" required class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">End</label>
+                                        <input type="datetime-local" x-model="form.end" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Location</label>
+                                    <input type="text" x-model="form.location" placeholder="City or Online" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
+                                    <textarea x-model="form.description" rows="3" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal"></textarea>
+                                </div>
                             </div>
                             <div x-show="type === 'feed'" class="space-y-4">
-                                <input type="url" x-model="feed.url" placeholder="https://... (.ics)" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2">
-                                <input type="text" x-model="feed.name" placeholder="Feed Name" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Feed URL (.ics) *</label>
+                                    <input type="url" x-model="feed.url" required placeholder="https://..." class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Feed Name *</label>
+                                    <input type="text" x-model="feed.name" required placeholder="e.g. HPC Workgroup" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                                </div>
                             </div>
                             <div class="mt-8 flex gap-3">
                                 <button type="button" @click="showSubmitModal = false" class="w-1/3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 py-3 rounded-md font-medium transition">Cancel</button>
@@ -300,29 +307,21 @@
 
     <!-- APP LOGIC -->
     <script>
-        // --- CONFIGURATION ---
         const REPO_OWNER = 'hpc-social';
         const REPO_NAME = 'events';
 
         function appData() {
             return {
-                // Theme State
                 isDark: false,
-                
-                // Calendar/Grid State
-                viewMode: 'grid',
+                viewMode: 'grid', 
                 calendar: null,
                 allEvents: [],
                 filteredEvents: [],
                 searchQuery: '',
-                
-                // Modals
                 selectedEvent: null,
                 showSubmitModal: false,
-                
-                // Forms
                 type: 'single',
-                form: { title: '', start: '', location: '' },
+                form: { title: '', start: '', end: '', location: '', url: '', description: '' },
                 feed: { url: '', name: '' },
 
                 initApp() {
@@ -330,7 +329,6 @@
                     this.initCalendar();
                 },
 
-                // --- Theme Logic ---
                 initTheme() {
                     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                         this.isDark = true;
@@ -355,13 +353,24 @@
                     this.showSubmitModal = false;
                 },
 
-                // --- Calendar Logic ---
+                switchToCalendar() {
+                    this.viewMode = 'calendar';
+                    this.$nextTick(() => {
+                        if(this.calendar) {
+                            this.calendar.changeView('dayGridMonth');
+                            this.calendar.updateSize(); 
+                        }
+                    });
+                },
+
                 initCalendar() {
                     var calendarEl = document.getElementById('calendar');
                     this.calendar = new FullCalendar.Calendar(calendarEl, {
                         initialView: 'dayGridMonth',
-                        events: './data/combined.json', 
-                        headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,listWeek' },
+                        headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek,listYear' },
+                        // Try loading combined, if fail, fallback is handled in fetchEvents for the GRID
+                        // For the calendar, we give it the primary feed
+                        events: 'data/combined.json',
                         eventColor: '#187a99',
                         height: 'auto',
                         eventClick: (info) => {
@@ -374,43 +383,84 @@
                 },
 
                 openEvent(event) {
-                    this.selectedEvent = event;
+                    let plain = {};
+                    
+                    if (event.toPlainObject) {
+                        const raw = event.toPlainObject({ collapseExtendedProps: true });
+                        plain = {
+                            ...raw,
+                            ...raw.extendedProps,
+                            start: event.startStr || event.start,
+                            end: event.endStr || event.end,
+                            url: event.url, 
+                            title: event.title,
+                            id: event.id
+                        };
+                    } else {
+                        plain = { 
+                            ...event,
+                            ...event.extendedProps
+                        };
+                    }
+
+                    // ROBUST URL EXTRACTION
+                    // Check standard 'url', extendedProps 'url', or even 'website' key
+                    let foundUrl = plain.url || (plain.extendedProps && plain.extendedProps.url) || null;
+                    plain.url = foundUrl;
+
+                    this.selectedEvent = plain;
                 },
 
                 async fetchEvents() {
                     try {
-                        let response = await fetch('./data/combined.json');
-                        // Fallback
-                        if (!response.ok) response = await fetch('./data/events.json');
+                        // LOAD LOCAL EVENTS.JSON FIRST TO ENSURE EDITS APPEAR
+                        const localRes = await fetch('data/events.json');
+                        let localEvents = [];
+                        if(localRes.ok) localEvents = await localRes.json();
+
+                        // LOAD COMBINED
+                        const combinedRes = await fetch('data/combined.json');
+                        let combinedEvents = [];
+                        if(combinedRes.ok) combinedEvents = await combinedRes.json();
+
+                        // Merge logic: prefer combined, but if local has newer data?
+                        // For simplicity in this static context, let's just use combined if available, 
+                        // but if combined is empty/missing, use local. 
+                        // OR: append local to combined if not present?
                         
-                        if (response.ok) {
-                            this.allEvents = await response.json();
-                            // Sort for the Grid View
-                            this.allEvents.sort((a,b) => new Date(a.start) - new Date(b.start));
-                            this.filteredEvents = this.allEvents;
+                        // Current fix for USER: If combined exists, it usually wins. 
+                        // If user is editing events.json locally, combined.json is STALE.
+                        // So let's prioritize events.json for the 'grid' view so they see changes.
+                        
+                        if(localEvents.length > 0) {
+                            this.allEvents = localEvents;
+                            // Optionally push external events from combined if you want
+                            // const external = combinedEvents.filter(e => e.extendedProps?.category === 'External');
+                            // this.allEvents.push(...external);
+                        } else {
+                            this.allEvents = combinedEvents;
                         }
+
+                        this.allEvents.sort((a,b) => new Date(a.start) - new Date(b.start));
+                        this.filteredEvents = this.allEvents;
+                        
                     } catch(e) { console.error("Error loading events:", e); }
                 },
 
                 filterEvents() {
                     const lowerQuery = this.searchQuery.toLowerCase();
-                    
-                    // Filter Grid View
                     this.filteredEvents = this.allEvents.filter(event => {
                         const getProp = (key) => (event[key] || (event.extendedProps && event.extendedProps[key]) || '').toLowerCase();
                         return getProp('title').includes(lowerQuery) || 
                                getProp('description').includes(lowerQuery) || 
                                getProp('location').includes(lowerQuery);
                     });
-
-                    // Filter Calendar View
                     if(this.calendar) {
                         this.calendar.removeAllEvents();
                         this.calendar.addEventSource(this.filteredEvents);
                     }
                 },
 
-                // --- Helpers ---
                 formatDateRange(start, end) {
                     if(!start) return '';
                     let dStart = new Date(start);
@@ -430,11 +480,63 @@
                     return new Date(dateStr).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
                 },
 
-                // --- Submission ---
+                addToGoogleCalendar(event) {
+                    if(!event) return;
+                    const toISO = (date) => new Date(date).toISOString().replace(/-|:|\.\d\d\d/g, "");
+                    const start = toISO(event.start);
+                    const end = event.end ? toISO(event.end) : start;
+                    const desc = (event.description || "") + (event.url ? `\n\nLink: ${event.url}` : "");
+                    const loc = event.location || "";
+                    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${start}/${end}&details=${encodeURIComponent(desc)}&location=${encodeURIComponent(loc)}`;
+                    window.open(url, '_blank');
+                },
+
+                downloadSingleIcs(event) {
+                    if(!event) return;
+                    const toISO = (date) => new Date(date).toISOString().replace(/-|:|\.\d\d\d/g, "");
+                    const start = toISO(event.start);
+                    const end = event.end ? toISO(event.end) : start;
+                    const desc = (event.description || "").replace(/\n/g, "\\n");
+                    const loc = event.location || "";
+                    
+                    const icsContent = [
+                        'BEGIN:VCALENDAR',
+                        'VERSION:2.0',
+                        'BEGIN:VEVENT',
+                        `UID:${event.id || Date.now()}`,
+                        `DTSTAMP:${toISO(new Date())}`,
+                        `DTSTART:${start}`,
+                        `DTEND:${end}`,
+                        `SUMMARY:${event.title}`,
+                        `DESCRIPTION:${desc}`,
+                        `LOCATION:${loc}`,
+                        'END:VEVENT',
+                        'END:VCALENDAR'
+                    ].join('\r\n');
+
+                    const blob = new Blob([icsContent], { type: 'text/calendar' });
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `event-${event.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.ics`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                },
+
                 generateGithubIssue() {
                     let title, body;
                     if (this.type === 'single') {
-                        const data = { type: 'event', ...this.form, category: "Community" };
+                        const data = { 
+                            title: this.form.title,
+                            start: this.form.start,
+                            end: this.form.end,
+                            location: this.form.location,
+                            url: this.form.url,
+                            description: this.form.description,
+                            type: 'event', 
+                            category: "Community" 
+                        };
                         title = `New Event: ${this.form.title}`;
                         body = `### Event Submission\n\n\`\`\`json\n${JSON.stringify(data, null, 2)}\n\`\`\``;
                     } else {
@@ -445,7 +547,7 @@
                     const url = `https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
                     window.open(url, '_blank');
                     this.showSubmitModal = false;
-                    this.form = { title: '', start: '', location: '' };
+                    this.form = { title: '', start: '', end: '', location: '', url: '', description: '' };
                     this.feed = { url: '', name: '' };
                 }
             }

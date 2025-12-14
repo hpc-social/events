@@ -1,0 +1,88 @@
+name: Process Submission
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  process:
+    if: github.event.label.name == 'approve-event'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Parse Issue and Update Files
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            
+            // PATH CONFIGURATION
+            const EVENTS_FILE = 'docs/data/events.json';
+            const FEEDS_FILE = 'docs/data/feeds.json';
+
+            // 1. Get JSON from Issue
+            const body = context.payload.issue.body;
+            const match = body.match(/```json\s*([\s\S]*?)\s*```/);
+            if (!match) {
+                console.log('No JSON found');
+                return;
+            }
+            
+            let data;
+            try {
+                data = JSON.parse(match[1]);
+            } catch(e) {
+                console.log('Invalid JSON');
+                return;
+            }
+
+            // 2. Determine Type and Save
+            if (data.type === 'feed') {
+                let list = [];
+                if (fs.existsSync(FEEDS_FILE)) {
+                    list = JSON.parse(fs.readFileSync(FEEDS_FILE, 'utf8'));
+                }
+                if (!list.includes(data.url)) {
+                    list.push(data.url);
+                    fs.writeFileSync(FEEDS_FILE, JSON.stringify(list, null, 2));
+                }
+            } else {
+                let list = [];
+                if (fs.existsSync(EVENTS_FILE)) {
+                    list = JSON.parse(fs.readFileSync(EVENTS_FILE, 'utf8'));
+                }
+                
+                // Add ID and cleanup
+                data.id = Date.now().toString();
+                delete data.type; 
+                
+                list.push(data);
+                fs.writeFileSync(EVENTS_FILE, JSON.stringify(list, null, 2));
+            }
+
+      - name: Commit Changes
+        run: |
+          git config user.name 'GitHub Action'
+          git config user.email 'action@github.com'
+          git add docs/data/events.json docs/data/feeds.json
+          git commit -m "Processed submission #${{ github.event.issue.number }}" || echo "No changes"
+          git push
+
+      - name: Trigger Aggregator
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          event-type: run-aggregator
+
+      - name: Close Issue
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            })

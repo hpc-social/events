@@ -1,41 +1,32 @@
 [
   {
-    "id": "1",
-    "title": "Community Code Night",
-    "start": "2025-10-15T18:00:00",
-    "end": "2025-10-15T21:00:00",
-    "location": "Downtown Library, Room 304",
-    "description": "Join us for a night of coding and networking. All skill levels welcome!",
-    "category": "Workshop",
-    "url": "https://example.com/rsvp"
-  },
-  {
-    "id": "2",
-    "title": "Open Source Summit",
-    "start": "2025-10-20",
-    "end": "2025-10-22",
-    "location": "Convention Center",
-    "description": "Three days of talks about the future of open source software.",
+    "id": "fosdem-2026",
+    "title": "FOSDEM 2026",
+    "start": "2026-01-31T09:00:00",
+    "end": "2026-02-01T17:00:00",
+    "location": "Brussels, Belgium",
+    "description": "FOSDEM is a free event for software developers to meet, share ideas and collaborate. It is one of the largest gatherings of Free and Open Source Software developers in the world.",
     "category": "Conference",
-    "url": "#"
+    "url": "https://fosdem.org/2026/"
   },
   {
-    "id": "3",
-    "title": "ReactJS Workshop",
-    "start": "2025-10-10T10:00:00",
-    "end": "2025-10-10T14:00:00",
-    "location": "Virtual (Zoom)",
-    "description": "Learn the basics of React Hooks and State management.",
-    "category": "Workshop",
-    "url": "#"
+    "id": "isc-2026",
+    "title": "ISC High Performance 2026",
+    "start": "2026-06-22T08:00:00",
+    "end": "2026-06-26T18:00:00",
+    "location": "Hamburg, Germany",
+    "description": "The event for High Performance Computing, Machine Learning, Data Analytics & Quantum Computing. ISC High Performance connects the dots between these technologies and the community.",
+    "category": "Conference",
+    "url": "https://isc-hpc.com/"
   },
   {
-    "id": "4",
-    "title": "Monthly Town Hall",
-    "start": "2025-10-28T19:00:00",
-    "location": "City Hall",
-    "description": "Public forum to discuss upcoming community initiatives.",
-    "category": "Meeting",
-    "url": "#"
+    "id": "sc26",
+    "title": "SC26 (Supercomputing 2026)",
+    "start": "2026-11-15T08:00:00",
+    "end": "2026-11-20T17:00:00",
+    "location": "Chicago, IL, USA",
+    "description": "The International Conference for High Performance Computing, Networking, Storage, and Analysis. SC26 will take place at the McCormick Place Convention Center.",
+    "category": "Conference",
+    "url": "https://sc26.supercomputing.org/"
   }
 ]
