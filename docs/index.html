@@ -149,6 +149,7 @@
                 </div>
             </template>
             <div x-show="filteredEvents.length === 0" class="col-span-full text-center py-12">
+                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">No events found</h3>
             </div>
         </div>
@@ -201,7 +202,6 @@
                                             <p class="text-sm font-medium mt-1" x-text="selectedEvent?.location || 'Online'"></p>
                                         </div>
                                     </div>
-                                    <!-- Website Row -->
                                     <div class="flex items-start p-4 bg-gray-50 dark:bg-gray-700/30 rounded-lg md:col-span-2" x-show="selectedEvent?.url">
                                         <svg class="h-6 w-6 mt-0.5 text-hpc-teal dark:text-hpc-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
                                         <div class="ml-3 overflow-hidden">
@@ -224,9 +224,11 @@
                                 <div class="flex gap-2">
                                     <button @click="addToGoogleCalendar(selectedEvent)" class="flex-1 sm:flex-none flex items-center justify-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition" title="Add to Google Calendar">
                                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1 6h2v5h4.15l.85 1.6-6 1.4-1-8zm7 11h-12v-2h12v2z"/></svg>
+                                        <span class="ml-2 sm:hidden">Google Cal</span>
                                     </button>
                                     <button @click="downloadSingleIcs(selectedEvent)" class="flex-1 sm:flex-none flex items-center justify-center px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition" title="Download .ics">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                        <span class="ml-2 sm:hidden">Download ICS</span>
                                     </button>
                                 </div>
                             </div>
@@ -259,20 +261,25 @@
                             <div x-show="type === 'single'" class="space-y-4">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Event Title *</label>
-                                    <input type="text" x-model="form.title" required class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                                    <input type="text" x-model="form.title" :required="type === 'single'" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Event Link (URL)</label>
                                     <input type="url" x-model="form.url" placeholder="https://..." class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
                                 </div>
+                                <!-- All Day Toggle + Date/Time -->
                                 <div class="grid grid-cols-2 gap-4">
+                                    <div class="col-span-2 flex items-center">
+                                        <input type="checkbox" id="allDay" x-model="form.allDay" class="h-4 w-4 text-hpc-blue focus:ring-hpc-blue border-gray-300 rounded">
+                                        <label for="allDay" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">All Day Event</label>
+                                    </div>
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Start *</label>
-                                        <input type="datetime-local" x-model="form.start" required class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                                        <input :type="form.allDay ? 'date' : 'datetime-local'" x-model="form.start" :required="type === 'single'" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">End</label>
-                                        <input type="datetime-local" x-model="form.end" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                                        <input :type="form.allDay ? 'date' : 'datetime-local'" x-model="form.end" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
                                     </div>
                                 </div>
                                 <div>
@@ -287,11 +294,11 @@
                             <div x-show="type === 'feed'" class="space-y-4">
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Feed URL (.ics) *</label>
-                                    <input type="url" x-model="feed.url" required placeholder="https://..." class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                                    <input type="url" x-model="feed.url" :required="type === 'feed'" placeholder="https://..." class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Feed Name *</label>
-                                    <input type="text" x-model="feed.name" required placeholder="e.g. HPC Workgroup" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                                    <input type="text" x-model="feed.name" :required="type === 'feed'" placeholder="e.g. HPC Workgroup" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
                                 </div>
                             </div>
                             <div class="mt-8 flex gap-3">
@@ -321,7 +328,7 @@
                 selectedEvent: null,
                 showSubmitModal: false,
                 type: 'single',
-                form: { title: '', start: '', end: '', location: '', url: '', description: '' },
+                form: { title: '', start: '', end: '', location: '', url: '', description: '', allDay: false },
                 feed: { url: '', name: '' },
 
                 initApp() {
@@ -368,9 +375,7 @@
                     this.calendar = new FullCalendar.Calendar(calendarEl, {
                         initialView: 'dayGridMonth',
                         headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek,listYear' },
-                        // Try loading combined, if fail, fallback is handled in fetchEvents for the GRID
-                        // For the calendar, we give it the primary feed
-                        events: 'data/combined.json',
+                        events: 'data/combined.json', 
                         eventColor: '#187a99',
                         height: 'auto',
                         eventClick: (info) => {
@@ -404,7 +409,6 @@
                     }
 
                     // ROBUST URL EXTRACTION
-                    // Check standard 'url', extendedProps 'url', or even 'website' key
                     let foundUrl = plain.url || (plain.extendedProps && plain.extendedProps.url) || null;
                     plain.url = foundUrl;
 
@@ -413,37 +417,13 @@
 
                 async fetchEvents() {
                     try {
-                        // LOAD LOCAL EVENTS.JSON FIRST TO ENSURE EDITS APPEAR
-                        const localRes = await fetch('data/events.json');
-                        let localEvents = [];
-                        if(localRes.ok) localEvents = await localRes.json();
-
-                        // LOAD COMBINED
-                        const combinedRes = await fetch('data/combined.json');
-                        let combinedEvents = [];
-                        if(combinedRes.ok) combinedEvents = await combinedRes.json();
-
-                        // Merge logic: prefer combined, but if local has newer data?
-                        // For simplicity in this static context, let's just use combined if available, 
-                        // but if combined is empty/missing, use local. 
-                        // OR: append local to combined if not present?
-                        
-                        // Current fix for USER: If combined exists, it usually wins. 
-                        // If user is editing events.json locally, combined.json is STALE.
-                        // So let's prioritize events.json for the 'grid' view so they see changes.
-                        
-                        if(localEvents.length > 0) {
-                            this.allEvents = localEvents;
-                            // Optionally push external events from combined if you want
-                            // const external = combinedEvents.filter(e => e.extendedProps?.category === 'External');
-                            // this.allEvents.push(...external);
-                        } else {
-                            this.allEvents = combinedEvents;
+                        let response = await fetch('data/combined.json');
+                        if (!response.ok) response = await fetch('data/events.json');
+                        if (response.ok) {
+                            this.allEvents = await response.json();
+                            this.allEvents.sort((a,b) => new Date(a.start) - new Date(b.start));
+                            this.filteredEvents = this.allEvents;
                         }
-
-                        this.allEvents.sort((a,b) => new Date(a.start) - new Date(b.start));
-                        this.filteredEvents = this.allEvents;
-                        
                     } catch(e) { console.error("Error loading events:", e); }
                 },
 
@@ -547,7 +527,7 @@
                     const url = `https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
                     window.open(url, '_blank');
                     this.showSubmitModal = false;
-                    this.form = { title: '', start: '', end: '', location: '', url: '', description: '' };
+                    this.form = { title: '', start: '', end: '', location: '', url: '', description: '', allDay: false };
                     this.feed = { url: '', name: '' };
                 }
             }
