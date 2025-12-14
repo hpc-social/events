@@ -28,5 +28,15 @@
     "description": "The International Conference for High Performance Computing, Networking, Storage, and Analysis. SC26 will take place at the McCormick Place Convention Center.",
     "category": "Conference",
     "url": "https://sc26.supercomputing.org/"
+  },
+  {
+    "title": "High Performance Software Foundation (HPSF) Conference",
+    "start": "2026-03-16",
+    "end": "2026-03-20",
+    "location": "Chicago, IL",
+    "url": "https://events.linuxfoundation.org/hpsf-conference/program/cfp/#overview",
+    "description": "The HPSF Conference is dedicated to advancing community-driven solutions for performance, portability, and productivity in a rapidly evolving High Performance Computing (HPC) landscape.",
+    "category": "Conference",
+    "id": "1765748546327"
   }
 ]
