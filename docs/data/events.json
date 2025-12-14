@@ -1,0 +1,41 @@
+[
+  {
+    "id": "1",
+    "title": "Community Code Night",
+    "start": "2025-10-15T18:00:00",
+    "end": "2025-10-15T21:00:00",
+    "location": "Downtown Library, Room 304",
+    "description": "Join us for a night of coding and networking. All skill levels welcome!",
+    "category": "Workshop",
+    "url": "https://example.com/rsvp"
+  },
+  {
+    "id": "2",
+    "title": "Open Source Summit",
+    "start": "2025-10-20",
+    "end": "2025-10-22",
+    "location": "Convention Center",
+    "description": "Three days of talks about the future of open source software.",
+    "category": "Conference",
+    "url": "#"
+  },
+  {
+    "id": "3",
+    "title": "ReactJS Workshop",
+    "start": "2025-10-10T10:00:00",
+    "end": "2025-10-10T14:00:00",
+    "location": "Virtual (Zoom)",
+    "description": "Learn the basics of React Hooks and State management.",
+    "category": "Workshop",
+    "url": "#"
+  },
+  {
+    "id": "4",
+    "title": "Monthly Town Hall",
+    "start": "2025-10-28T19:00:00",
+    "location": "City Hall",
+    "description": "Public forum to discuss upcoming community initiatives.",
+    "category": "Meeting",
+    "url": "#"
+  }
+]
