@@ -2,51 +2,45 @@
   {
     "id": "fosdem-2026",
     "title": "FOSDEM 2026",
-    "start": "2026-01-31T09:00:00",
-    "end": "2026-02-01T17:00:00",
+    "start": "2026-01-31",
+    "end": "2026-02-02",
     "location": "Brussels, Belgium",
+    "timeZone": "Europe/Brussels",
     "description": "FOSDEM is a free event for software developers to meet, share ideas and collaborate. It is one of the largest gatherings of Free and Open Source Software developers in the world.",
     "category": "Conference",
     "url": "https://fosdem.org/2026/"
   },
   {
+    "id": "1765854501377",
+    "title": "HPSF Community Summit 2026",
+    "start": "2026-02-25",
+    "end": "2026-02-27",
+    "location": "Braunschweig, Germany",
+    "timeZone": "Europe/Berlin",
+    "url": "https://hpsf.io/event/hpsf-community-summit-2026/",
+    "description": "",
+    "category": "Community"
+  },
+  {
     "id": "isc-2026",
     "title": "ISC High Performance 2026",
-    "start": "2026-06-22T08:00:00",
-    "end": "2026-06-26T18:00:00",
+    "start": "2026-06-22",
+    "end": "2026-06-27",
     "location": "Hamburg, Germany",
-    "description": "The event for High Performance Computing, Machine Learning, Data Analytics & Quantum Computing. ISC High Performance connects the dots between these technologies and the community.",
+    "timeZone": "Europe/Berlin",
+    "description": "The event for High Performance Computing, Machine Learning, Data Analytics & Quantum Computing.",
     "category": "Conference",
     "url": "https://isc-hpc.com/"
   },
   {
     "id": "sc26",
     "title": "SC26 (Supercomputing 2026)",
-    "start": "2026-11-15T08:00:00",
-    "end": "2026-11-20T17:00:00",
+    "start": "2026-11-15",
+    "end": "2026-11-21",
     "location": "Chicago, IL, USA",
-    "description": "The International Conference for High Performance Computing, Networking, Storage, and Analysis. SC26 will take place at the McCormick Place Convention Center.",
+    "timeZone": "America/Chicago",
+    "description": "The International Conference for High Performance Computing, Networking, Storage, and Analysis.",
     "category": "Conference",
     "url": "https://sc26.supercomputing.org/"
-  },
-  {
-    "title": "High Performance Software Foundation (HPSF) Conference",
-    "start": "2026-03-16",
-    "end": "2026-03-20",
-    "location": "Chicago, IL",
-    "url": "https://events.linuxfoundation.org/hpsf-conference/program/cfp/#overview",
-    "description": "The HPSF Conference is dedicated to advancing community-driven solutions for performance, portability, and productivity in a rapidly evolving High Performance Computing (HPC) landscape.",
-    "category": "Conference",
-    "id": "1765748546327"
-  },
-  {
-    "title": "HPSF Community Summit 2026",
-    "start": "2026-02-25",
-    "end": "2026-02-27",
-    "location": "Braunschweig, Germany",
-    "url": "https://hpsf.io/event/hpsf-community-summit-2026/",
-    "description": "",
-    "category": "Community",
-    "id": "1765854501377"
   }
 ]

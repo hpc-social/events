@@ -307,58 +307,76 @@
                         </button>
                     </div>
                     <div class="p-6">
-                        <form @submit.prevent="generateGithubIssue">
-                            <div class="flex p-1 bg-gray-100 dark:bg-gray-700 rounded-lg mb-6">
-                                <button type="button" @click="type='single'" :class="type==='single' ? 'bg-white dark:bg-gray-600 text-hpc-teal dark:text-white shadow' : 'text-gray-500 dark:text-gray-400'" class="w-1/2 py-2 rounded-md text-sm font-medium transition-all">Single Event</button>
-                                <button type="button" @click="type='feed'" :class="type==='feed' ? 'bg-white dark:bg-gray-600 text-hpc-teal dark:text-white shadow' : 'text-gray-500 dark:text-gray-400'" class="w-1/2 py-2 rounded-md text-sm font-medium transition-all">Feed (.ics)</button>
+                    <form @submit.prevent="generateGithubIssue">
+                        <div class="flex p-1 bg-gray-100 dark:bg-gray-700 rounded-lg mb-6">
+                            <button type="button" @click="type='single'" :class="type==='single' ? 'bg-white dark:bg-gray-600 text-hpc-teal dark:text-white shadow' : 'text-gray-500 dark:text-gray-400'" class="w-1/2 py-2 rounded-md text-sm font-medium transition-all">Single Event</button>
+                            <button type="button" @click="type='feed'" :class="type==='feed' ? 'bg-white dark:bg-gray-600 text-hpc-teal dark:text-white shadow' : 'text-gray-500 dark:text-gray-400'" class="w-1/2 py-2 rounded-md text-sm font-medium transition-all">Feed (.ics)</button>
+                        </div>
+                        
+                        <!-- Single Event Form -->
+                        <div x-show="type === 'single'" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Event Title *</label>
+                                <input type="text" x-model="form.title" :required="type === 'single'" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
                             </div>
-                            <div x-show="type === 'single'" class="space-y-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Event Title *</label>
-                                    <input type="text" x-model="form.title" :required="type === 'single'" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Event Link (URL)</label>
+                                <input type="url" x-model="form.url" placeholder="https://..." class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="col-span-2 flex items-center">
+                                    <input type="checkbox" id="allDay" x-model="form.allDay" class="h-4 w-4 text-hpc-blue focus:ring-hpc-blue border-gray-300 rounded">
+                                    <label for="allDay" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">All Day Event</label>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Event Link (URL)</label>
-                                    <input type="url" x-model="form.url" placeholder="https://..." class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
-                                </div>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="col-span-2 flex items-center">
-                                        <input type="checkbox" id="allDay" x-model="form.allDay" class="h-4 w-4 text-hpc-blue focus:ring-hpc-blue border-gray-300 rounded">
-                                        <label for="allDay" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">All Day Event</label>
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Start *</label>
-                                        <input :type="form.allDay ? 'date' : 'datetime-local'" x-model="form.start" :required="type === 'single'" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
-                                    </div>
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">End</label>
-                                        <input :type="form.allDay ? 'date' : 'datetime-local'" x-model="form.end" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
-                                    </div>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Start *</label>
+                                    <input :type="form.allDay ? 'date' : 'datetime-local'" x-model="form.start" :required="type === 'single'" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Location</label>
-                                    <input type="text" x-model="form.location" placeholder="City or Online" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
-                                    <textarea x-model="form.description" rows="3" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal"></textarea>
+                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">End</label>
+                                    <input :type="form.allDay ? 'date' : 'datetime-local'" x-model="form.end" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
                                 </div>
                             </div>
-                            <div x-show="type === 'feed'" class="space-y-4">
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Feed URL (.ics) *</label>
-                                    <input type="url" x-model="feed.url" :required="type === 'feed'" placeholder="https://..." class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Feed Name *</label>
-                                    <input type="text" x-model="feed.name" :required="type === 'feed'" placeholder="e.g. HPC Workgroup" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
-                                </div>
+                            <div x-show="!form.allDay">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Timezone</label>
+                                <select x-model="form.timeZone" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                                    <option value="America/New_York">US East (New York)</option>
+                                    <option value="America/Chicago">US Central (Chicago)</option>
+                                    <option value="America/Denver">US Mountain (Denver)</option>
+                                    <option value="America/Los_Angeles">US Pacific (Los Angeles)</option>
+                                    <option value="Europe/London">Europe (London)</option>
+                                    <option value="Europe/Berlin">Europe (Berlin)</option>
+                                    <option value="Asia/Tokyo">Asia (Tokyo)</option>
+                                    <option value="UTC">UTC</option>
+                                </select>
                             </div>
-                            <div class="mt-8 flex gap-3">
-                                <button type="button" @click="showSubmitModal = false" class="w-1/3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 py-3 rounded-md font-medium transition">Cancel</button>
-                                <button type="submit" class="w-2/3 bg-hpc-blue text-white py-3 rounded-md font-bold hover:bg-blue-800 shadow-md hover:shadow-lg transition">Proceed to GitHub</button>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Location</label>
+                                <input type="text" x-model="form.location" placeholder="City or Online" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
                             </div>
-                        </form>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
+                                <textarea x-model="form.description" rows="3" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal"></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Feed Form -->
+                        <div x-show="type === 'feed'" class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Feed URL (.ics) *</label>
+                                <input type="url" x-model="feed.url" :required="type === 'feed'" placeholder="https://..." class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Feed Name *</label>
+                                <input type="text" x-model="feed.name" :required="type === 'feed'" placeholder="e.g. HPC Workgroup" class="block w-full border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md p-2 focus:ring-hpc-teal focus:border-hpc-teal">
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 flex gap-3">
+                            <button type="button" @click="showSubmitModal = false" class="w-1/3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 py-3 rounded-md font-medium transition">Cancel</button>
+                            <button type="submit" class="w-2/3 bg-hpc-blue text-white py-3 rounded-md font-bold hover:bg-blue-800 shadow-md hover:shadow-lg transition">Proceed to GitHub</button>
+                        </div>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -381,7 +399,7 @@
                 selectedEvent: null,
                 showSubmitModal: false,
                 type: 'single',
-                form: { title: '', start: '', end: '', location: '', url: '', description: '', allDay: false },
+                form: { title: '', start: '', end: '', location: '', url: '', description: '', allDay: false, timeZone: 'America/New_York' },
                 feed: { url: '', name: '' },
 
                 initApp() {
@@ -428,8 +446,8 @@
                     this.calendar = new FullCalendar.Calendar(calendarEl, {
                         initialView: 'dayGridMonth',
                         headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek' }, // REMOVED listYear
-                        // NO 'events' SOURCE HERE. We load manually below.
                         eventColor: '#187a99',
+                        timeZone: 'UTC',
                         height: 'auto',
                         eventClick: (info) => {
                             info.jsEvent.preventDefault();
@@ -525,31 +543,45 @@
                     });
                     return groups;
                 },
-
                 formatDateRange(start, end) {
                     if(!start) return '';
                     let dStart = new Date(start);
-                    // Check for All Day (often missing time or set to midnight boundaries with specific flags)
-                    // Simple heuristic: if input string is YYYY-MM-DD or time is 00:00
-                    // But here we rely on the display requirement.
+                    let dEnd = end ? new Date(end) : null;
                     
-                    const options = { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' };
-                    let s = dStart.toLocaleDateString('en-US', options);
+                    const tz = this.selectedEvent?.timeZone || undefined; // Get timezone from the selected event
+                    const isAllDay = this.selectedEvent?.allDay || !start.includes('T');
                     
-                    if (end) {
-                        let dEnd = new Date(end);
+                    const options = {
+                        weekday: 'short', month: 'short', day: 'numeric',
+                        timeZone: tz // Apply the event's timezone!
+                    };
+
+                    if (!isAllDay) {
+                        options.hour = 'numeric';
+                        options.minute = '2-digit';
+                        options.timeZoneName = 'short';
+                    }
+
+                    let s = dStart.toLocaleString('en-US', options);
+                    if (dEnd) {
+                        // ... logic for formatting end date remains same, but uses new options
                         const isSameDay = dStart.toDateString() === dEnd.toDateString();
                         let e = isSameDay 
-                            ? dEnd.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }) 
-                            : dEnd.toLocaleDateString('en-US', options);
+                            ? dEnd.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: tz }) 
+                            : dEnd.toLocaleString('en-US', options);
                         return `${s} - ${e}`;
                     }
                     return s;
                 },
-                formatDateShort(dateStr) {
-                    return new Date(dateStr).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+                formatDateShort(dateStr, tz) {
+                    if (!dateStr) return '';
+                    return new Date(dateStr).toLocaleDateString('en-US', { 
+                        weekday: 'short', 
+                        month: 'short', 
+                        day: 'numeric',
+                        timeZone: tz || 'UTC' // Fallback to UTC to prevent local conversion
+                    });
                 },
-
                 addToGoogleCalendar(event) {
                     if(!event) return;
                     const toISO = (date) => new Date(date).toISOString().replace(/-|:|\.\d\d\d/g, "");
@@ -593,33 +625,36 @@
                     a.click();
                     document.body.removeChild(a);
                 },
+              generateGithubIssue() {
+                  let title, body;
+                  if (this.type === 'single') {
+                      // Create a clean copy of the form data
+                      let data = { ...this.form };
+                      
+                      // Don't submit the temporary 'allDay' flag
+                      delete data.allDay;
 
-                generateGithubIssue() {
-                    let title, body;
-                    if (this.type === 'single') {
-                        const data = { 
-                            title: this.form.title,
-                            start: this.form.start,
-                            end: this.form.end,
-                            location: this.form.location,
-                            url: this.form.url,
-                            description: this.form.description,
-                            type: 'event', 
-                            category: "Community" 
-                        };
-                        title = `New Event: ${this.form.title}`;
-                        body = `### Event Submission\n\n\`\`\`json\n${JSON.stringify(data, null, 2)}\n\`\`\``;
-                    } else {
-                        const data = { type: 'feed', ...this.feed };
-                        title = `New Feed: ${this.feed.name}`;
-                        body = `### Feed Submission\n\n\`\`\`json\n${JSON.stringify(data, null, 2)}\n\`\`\``;
-                    }
-                    const url = `https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
-                    window.open(url, '_blank');
-                    this.showSubmitModal = false;
-                    this.form = { title: '', start: '', end: '', location: '', url: '', description: '', allDay: false };
-                    this.feed = { url: '', name: '' };
-                }
+                      // If it's an all-day event, remove the timezone as it's not needed
+                      if (this.form.allDay) {
+                          delete data.timeZone;
+                      }
+
+                      title = `New Event: ${this.form.title}`;
+                      body = `### Event Submission\n\n\`\`\`json\n${JSON.stringify(data, null, 2)}\n\`\`\``;
+                  } else {
+                      const data = { type: 'feed', ...this.feed };
+                      title = `New Feed: ${this.feed.name}`;
+                      body = `### Feed Submission\n\n\`\`\`json\n${JSON.stringify(data, null, 2)}\n\`\`\``;
+                  }
+                  
+                  const url = `https://github.com/${REPO_OWNER}/${REPO_NAME}/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+                  window.open(url, '_blank');
+                  this.showSubmitModal = false;
+                  
+                  // Reset the form to its initial state
+                  this.form = { title: '', start: '', end: '', location: '', url: '', description: '', allDay: false, timeZone: 'America/New_York' };
+                  this.feed = { url: '', name: '' };
+              }
             }
         }
     </script>
