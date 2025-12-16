@@ -38,5 +38,15 @@
     "description": "The HPSF Conference is dedicated to advancing community-driven solutions for performance, portability, and productivity in a rapidly evolving High Performance Computing (HPC) landscape.",
     "category": "Conference",
     "id": "1765748546327"
+  },
+  {
+    "title": "HPSF Community Summit 2026",
+    "start": "2026-02-25",
+    "end": "2026-02-27",
+    "location": "Braunschweig, Germany",
+    "url": "https://hpsf.io/event/hpsf-community-summit-2026/",
+    "description": "",
+    "category": "Community",
+    "id": "1765854501377"
   }
 ]
