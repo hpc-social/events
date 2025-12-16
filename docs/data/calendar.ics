@@ -1,55 +1,43 @@
 BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//HPC Social//Community Calendar//EN
-CALSCALE:GREGORIAN
-METHOD:PUBLISH
 BEGIN:VEVENT
 UID:fosdem-2026
-DTSTAMP:20251216T030836Z
-DTSTART:20260131T090000Z
-DTEND:20260201T170000Z
+DTSTAMP:20251216T062621Z
+DTSTART:20260131T000000Z
+DTEND:20260202T000000Z
 SUMMARY:FOSDEM 2026
 DESCRIPTION:FOSDEM is a free event for software developers to meet, share ideas and collaborate. It is one of the largest gatherings of Free and Open Source Software developers in the world.
 LOCATION:Brussels, Belgium
 URL:https://fosdem.org/2026/
 END:VEVENT
 BEGIN:VEVENT
-UID:isc-2026
-DTSTAMP:20251216T030836Z
-DTSTART:20260622T080000Z
-DTEND:20260626T180000Z
-SUMMARY:ISC High Performance 2026
-DESCRIPTION:The event for High Performance Computing, Machine Learning, Data Analytics & Quantum Computing. ISC High Performance connects the dots between these technologies and the community.
-LOCATION:Hamburg, Germany
-URL:https://isc-hpc.com/
-END:VEVENT
-BEGIN:VEVENT
-UID:sc26
-DTSTAMP:20251216T030836Z
-DTSTART:20261115T080000Z
-DTEND:20261120T170000Z
-SUMMARY:SC26 (Supercomputing 2026)
-DESCRIPTION:The International Conference for High Performance Computing, Networking, Storage, and Analysis. SC26 will take place at the McCormick Place Convention Center.
-LOCATION:Chicago, IL, USA
-URL:https://sc26.supercomputing.org/
-END:VEVENT
-BEGIN:VEVENT
-UID:1765748546327
-DTSTAMP:20251216T030836Z
-DTSTART:20260316T000000Z
-DTEND:20260320T000000Z
-SUMMARY:High Performance Software Foundation (HPSF) Conference
-DESCRIPTION:The HPSF Conference is dedicated to advancing community-driven solutions for performance, portability, and productivity in a rapidly evolving High Performance Computing (HPC) landscape.
-LOCATION:Chicago, IL
-URL:https://events.linuxfoundation.org/hpsf-conference/program/cfp/#overview
-END:VEVENT
-BEGIN:VEVENT
 UID:1765854501377
-DTSTAMP:20251216T030836Z
+DTSTAMP:20251216T062621Z
 DTSTART:20260225T000000Z
 DTEND:20260227T000000Z
 SUMMARY:HPSF Community Summit 2026
 LOCATION:Braunschweig, Germany
 URL:https://hpsf.io/event/hpsf-community-summit-2026/
+END:VEVENT
+BEGIN:VEVENT
+UID:isc-2026
+DTSTAMP:20251216T062621Z
+DTSTART:20260622T000000Z
+DTEND:20260627T000000Z
+SUMMARY:ISC High Performance 2026
+DESCRIPTION:The event for High Performance Computing, Machine Learning, Data Analytics & Quantum Computing.
+LOCATION:Hamburg, Germany
+URL:https://isc-hpc.com/
+END:VEVENT
+BEGIN:VEVENT
+UID:sc26
+DTSTAMP:20251216T062621Z
+DTSTART:20261115T000000Z
+DTEND:20261121T000000Z
+SUMMARY:SC26 (Supercomputing 2026)
+DESCRIPTION:The International Conference for High Performance Computing, Networking, Storage, and Analysis.
+LOCATION:Chicago, IL, USA
+URL:https://sc26.supercomputing.org/
 END:VEVENT
 END:VCALENDAR
